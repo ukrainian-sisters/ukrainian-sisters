@@ -7,6 +7,8 @@
     { "src": "/projects", "dest": "/projects.html" },
     { "src": "/news", "dest": "/news.html" },
     { "src": "/help", "dest": "/help.html" },
-    { "src": "/transparency", "dest": "/transparency.html" }
+    { "src": "/transparency", "dest": "/transparency.html" },
+    { "src": "/donate", "dest": "/help.html" },
+    { "src": "/donate-page", "dest": "/help.html" }
   ]
 }
