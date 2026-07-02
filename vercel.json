@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "functions": {
+    "api/liqpay.js": { "runtime": "nodejs18.x" }
+  },
+  "routes": [
+    { "src": "/api/liqpay", "dest": "/api/liqpay.js" },
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/about", "dest": "/about.html" },
+    { "src": "/projects", "dest": "/projects.html" },
+    { "src": "/news", "dest": "/news.html" },
+    { "src": "/help", "dest": "/help.html" },
+    { "src": "/transparency", "dest": "/transparency.html" }
+  ]
+}
