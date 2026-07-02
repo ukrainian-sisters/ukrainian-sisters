@@ -683,31 +683,30 @@ footer{background:#12101A;padding:34px 6%;display:flex;align-items:center;justif
 <div class="liqpay-wrap" id="donate-widget">
   <p style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">Оберіть суму (грн)</p>
   <div class="liqpay-amounts">
-    <button class="lp-amount" onclick="selectAmount(50,   this)">50</button>
-    <button class="lp-amount selected" onclick="selectAmount(100,  this)">100</button>
-    <button class="lp-amount" onclick="selectAmount(200,  this)">200</button>
-    <button class="lp-amount" onclick="selectAmount(300,  this)">300</button>
-    <button class="lp-amount" onclick="selectAmount(400,  this)">400</button>
-    <button class="lp-amount" onclick="selectAmount(500,  this)">500</button>
-    <button class="lp-amount" onclick="selectAmount(1000, this)">1 000</button>
-    <button class="lp-amount" onclick="selectAmount(5000, this)">5 000</button>
+    <button class="lp-amount" onclick="selectAmount(50,this)">50</button>
+    <button class="lp-amount selected" onclick="selectAmount(100,this)">100</button>
+    <button class="lp-amount" onclick="selectAmount(200,this)">200</button>
+    <button class="lp-amount" onclick="selectAmount(300,this)">300</button>
+    <button class="lp-amount" onclick="selectAmount(400,this)">400</button>
+    <button class="lp-amount" onclick="selectAmount(500,this)">500</button>
+    <button class="lp-amount" onclick="selectAmount(1000,this)">1 000</button>
+    <button class="lp-amount" onclick="selectAmount(5000,this)">5 000</button>
   </div>
   <div class="lp-custom-wrap">
     <span class="lp-custom-label">Своя сума:</span>
     <input id="lp-custom" class="lp-custom-input" type="number" min="1"
-           placeholder="Введіть суму в грн" oninput="onCustomInput(this)"/>
+           placeholder="Введіть суму" oninput="onCustomInput(this)"/>
     <span class="lp-custom-label">грн</span>
   </div>
   <button class="btn-liqpay" id="btn-donate-main" onclick="donatMain()">
-    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+    <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:white;fill:none;stroke-width:1.8;stroke-linecap:round;"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
     ❤️ Задонатити 100 грн
   </button>
   <div class="liqpay-note">
-    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-    Безпечна оплата через LiqPay · Visa, Mastercard, Apple Pay, Google Pay
+    <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#2E7D5E;fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
+    Безпечна оплата · Visa, Mastercard, Apple Pay, Google Pay
   </div>
 </div>
-
           <div class="bank-details">
             <h4>Банківські реквізити</h4>
             <div class="bank-row"><span>Організація</span><span>БО «Українські сестри»</span></div>
@@ -968,291 +967,83 @@ document.querySelectorAll('.amount-btn').forEach(btn => {
 });
 </script>
 
-<!-- LIQPAY WIDGET STYLES -->
-<style>
-.liqpay-wrap {
-  margin-top: 28px;
-}
-.liqpay-amounts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-.lp-amount {
-  padding: 10px 18px;
-  border: 1.5px solid var(--border-blue);
-  border-radius: 100px;
-  background: white;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--blue);
-  cursor: pointer;
-  font-family: 'Nunito', sans-serif;
-  transition: all 0.18s;
-}
-.lp-amount:hover, .lp-amount.selected {
-  background: var(--pink);
-  border-color: var(--pink);
-  color: white;
-}
-.lp-custom-wrap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.lp-custom-input {
-  flex: 1;
-  padding: 11px 18px;
-  border: 1.5px solid var(--border-blue);
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 600;
-  font-family: 'Nunito', sans-serif;
-  color: var(--charcoal);
-  outline: none;
-  transition: border-color 0.18s;
-}
-.lp-custom-input:focus { border-color: var(--pink); }
-.lp-custom-input::placeholder { color: var(--muted); font-weight: 400; }
-.lp-custom-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--muted);
-  white-space: nowrap;
-}
-.btn-liqpay {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  padding: 15px;
-  background: var(--pink);
-  color: white;
-  border: none;
-  border-radius: 100px;
-  font-size: 15px;
-  font-weight: 700;
-  font-family: 'Nunito', sans-serif;
-  cursor: pointer;
-  transition: background 0.18s, transform 0.15s;
-  letter-spacing: 0.02em;
-}
-.btn-liqpay:hover { background: var(--pink-dark); transform: translateY(-1px); }
-.btn-liqpay:disabled { background: var(--muted); cursor: not-allowed; transform: none; }
-.btn-liqpay svg { width: 18px; height: 18px; stroke: white; fill: none; stroke-width: 1.8; stroke-linecap: round; }
-
-.liqpay-note {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 14px;
-  font-size: 12px;
-  color: var(--muted);
-}
-.liqpay-note svg { width: 14px; height: 14px; stroke: var(--green, #2E7D5E); fill: none; stroke-width: 2; stroke-linecap: round; flex-shrink: 0; }
-
-/* Mini widget for project cards */
-.liqpay-mini {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.lp-mini-amount {
-  padding: 5px 12px;
-  border: 1.5px solid var(--border);
-  border-radius: 100px;
-  background: white;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--pink);
-  cursor: pointer;
-  font-family: 'Nunito', sans-serif;
-  transition: all 0.18s;
-}
-.lp-mini-amount:hover, .lp-mini-amount.selected {
-  background: var(--pink);
-  border-color: var(--pink);
-  color: white;
-}
-.btn-liqpay-mini {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 7px 16px;
-  background: var(--orange);
-  color: white;
-  border: none;
-  border-radius: 100px;
-  font-size: 11px;
-  font-weight: 700;
-  font-family: 'Nunito', sans-serif;
-  cursor: pointer;
-  transition: background 0.18s;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.btn-liqpay-mini:hover { background: var(--orange-dark); }
-
-/* Modal for payment */
-.liqpay-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(28,24,34,0.75);
-  backdrop-filter: blur(6px);
-  z-index: 900;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.liqpay-modal-overlay.open { display: flex; }
-.liqpay-modal-box {
-  background: white;
-  border-radius: 20px;
-  padding: 32px;
-  max-width: 420px;
-  width: 100%;
-  position: relative;
-  text-align: center;
-}
-.liqpay-modal-close {
-  position: absolute;
-  top: 14px; right: 14px;
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-}
-.liqpay-modal-close svg { width: 14px; height: 14px; stroke: var(--muted); fill: none; stroke-width: 2; stroke-linecap: round; }
-.liqpay-modal-box h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 24px; font-weight: 500;
-  color: var(--charcoal);
-  margin-bottom: 8px;
-}
-.liqpay-modal-box p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
-#liqpay-container { min-height: 60px; display: flex; align-items: center; justify-content: center; }
-.liqpay-spinner {
-  width: 32px; height: 32px;
-  border: 3px solid var(--border);
-  border-top-color: var(--pink);
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
 </style>
 
-<!-- LIQPAY PAYMENT MODAL -->
-<div class="liqpay-modal-overlay" id="liqpay-modal">
-  <div class="liqpay-modal-box">
-    <button class="liqpay-modal-close" onclick="closeLiqpayModal()">
-      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <h3>Оплата через LiqPay</h3>
-    <p id="liqpay-modal-desc">Завантаження форми оплати...</p>
-    <div id="liqpay-container"><div class="liqpay-spinner"></div></div>
-  </div>
-</div>
+
+
+
 
 <script>
-// ── LiqPay Integration ──────────────────────────────────────────
-const LP_PUBLIC_KEY = 'i31849357741';
-
-async function initLiqPay(amount, description) {
-  document.getElementById('liqpay-modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  document.getElementById('liqpay-modal-desc').textContent =
-    `Сума: ${amount} грн · ${description}`;
-  document.getElementById('liqpay-container').innerHTML =
-    '<div class="liqpay-spinner"></div>';
-
-  try {
-    const resp = await fetch('/api/liqpay', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        amount,
-        description,
-        order_id: 'us_' + Date.now()
-      })
-    });
-
-    if (!resp.ok) throw new Error('API error');
-    const { data, signature } = await resp.json();
-
-    // Render LiqPay button
-    document.getElementById('liqpay-container').innerHTML = `
-      <form method="POST" action="https://www.liqpay.ua/api/3/checkout"
-            accept-charset="utf-8" target="_blank" style="width:100%;">
-        <input type="hidden" name="data"      value="${data}"/>
-        <input type="hidden" name="signature" value="${signature}"/>
-        <button type="submit" style="
-          width:100%;padding:14px;background:#C94774;color:white;
-          border:none;border-radius:100px;font-size:15px;font-weight:700;
-          font-family:'Nunito',sans-serif;cursor:pointer;letter-spacing:0.02em;">
-          💳 Сплатити ${amount} грн
-        </button>
-      </form>`;
-  } catch(e) {
-    document.getElementById('liqpay-container').innerHTML =
-      '<p style="color:#C94774;font-size:13px;">Помилка завантаження. Спробуйте ще раз або напишіть нам.</p>';
-  }
-}
-
-function closeLiqpayModal() {
-  document.getElementById('liqpay-modal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-// Amount selector logic (full widget)
+// LiqPay Integration — calls /api/liqpay serverless function
 let selectedAmount = 100;
+
 function selectAmount(val, el) {
   selectedAmount = val;
   document.querySelectorAll('.lp-amount').forEach(b => b.classList.remove('selected'));
   if (el) el.classList.add('selected');
-  document.getElementById('lp-custom').value = '';
-  updateDonateBtn();
-}
-
-function updateDonateBtn() {
-  const btn = document.getElementById('btn-donate-main');
-  if (btn) btn.textContent = `❤️ Задонатити ${selectedAmount} грн`;
+  const inp = document.getElementById('lp-custom');
+  if (inp) inp.value = '';
+  updateBtn();
 }
 
 function onCustomInput(el) {
   const val = parseInt(el.value);
   document.querySelectorAll('.lp-amount').forEach(b => b.classList.remove('selected'));
-  if (val && val > 0) {
-    selectedAmount = val;
-    updateDonateBtn();
-  }
+  if (val && val > 0) { selectedAmount = val; updateBtn(); }
 }
 
-function donatMain() {
+function updateBtn() {
+  const btn = document.getElementById('btn-donate-main');
+  if (btn) btn.innerHTML = '&#10084;&#65039; Задонатити ' + selectedAmount + ' грн';
+}
+
+async function donatMain() {
   const custom = document.getElementById('lp-custom');
   if (custom && custom.value) selectedAmount = parseInt(custom.value) || selectedAmount;
   if (!selectedAmount || selectedAmount < 1) return;
-  initLiqPay(selectedAmount, 'Донат — Українські сестри');
+  await openLiqPay(selectedAmount, 'Донат — Українські сестри');
 }
 
-// Mini widget for project cards
-let miniAmounts = {};
-function selectMiniAmount(projectId, val, el) {
-  miniAmounts[projectId] = val;
-  document.querySelectorAll(`.lp-mini-${projectId}`).forEach(b => b.classList.remove('selected'));
+function selectMiniAmount(pid, val, el) {
+  document.querySelectorAll('.lp-mini-' + pid).forEach(b => b.classList.remove('selected'));
   if (el) el.classList.add('selected');
+  const wrap = document.getElementById('mini-' + pid);
+  if (wrap) wrap.dataset.amount = val;
 }
 
-function donateMini(projectId, projectName) {
-  const amt = miniAmounts[projectId] || 100;
-  initLiqPay(amt, `Підтримати проєкт: ${projectName}`);
+async function donateMiniBtn(pid, name) {
+  const wrap = document.getElementById('mini-' + pid);
+  const amt = wrap && wrap.dataset.amount ? parseInt(wrap.dataset.amount) : 200;
+  await openLiqPay(amt, 'Підтримати: ' + name);
+}
+
+async function openLiqPay(amount, description) {
+  try {
+    const resp = await fetch('/api/liqpay', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount, description, order_id: 'us_' + Date.now() })
+    });
+    const json = await resp.json();
+    if (json.error) throw new Error(json.error);
+    const { data, signature } = json;
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://www.liqpay.ua/api/3/checkout';
+    form.acceptCharset = 'utf-8';
+    form.target = '_blank';
+    const d = document.createElement('input');
+    d.type = 'hidden'; d.name = 'data'; d.value = data;
+    const s = document.createElement('input');
+    s.type = 'hidden'; s.name = 'signature'; s.value = signature;
+    form.appendChild(d); form.appendChild(s);
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+  } catch(e) {
+    alert('Помилка оплати: ' + e.message + '\nБудь ласка, напишіть нам на email.');
+  }
 }
 </script>
-
 </body>
 </html>
