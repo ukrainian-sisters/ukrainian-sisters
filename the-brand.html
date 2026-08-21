@@ -341,6 +341,36 @@
   @media (prefers-reduced-motion: reduce){
     *{ transition:none !important; animation:none !important; }
   }
+
+  .cart-icon-btn {
+    position: relative;
+    background: none;
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background .2s;
+  }
+  .cart-icon-btn:hover { background: var(--ink); color: var(--paper); }
+  .cart-count {
+    background: var(--red);
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    display: none;
+  }
+  .cart-count.visible { display: flex; }
 </style>
 </head>
 <body>
@@ -358,6 +388,7 @@
       <a href="#care">Догляд</a>
       <a href="#contact">Контакти</a>
     </div>
+    <a class="cart-icon-btn" href="/cart" id="nav-cart-btn">🛒 <span class="cart-count" id="cart-count"></span></a>
   </nav>
 </header>
 
@@ -625,32 +656,44 @@ grid.innerHTML = products.map(p => `
 `).join('');
 
 
-// Cart logic
 function addToCart(product) {
   let cart = [];
   try { cart = JSON.parse(localStorage.getItem('us_cart')) || []; } catch {}
   const existing = cart.find(i => i.num === product.num);
-  if (existing) {
-    existing.qty = (existing.qty || 1) + 1;
-  } else {
-    cart.push({...product, qty: 1});
-  }
+  if (existing) { existing.qty = (existing.qty || 1) + 1; }
+  else { cart.push({...product, qty: 1}); }
   localStorage.setItem('us_cart', JSON.stringify(cart));
-  window.location.href = '/cart';
+  updateCartCount();
 }
+
+function updateCartCount() {
+  let cart = [];
+  try { cart = JSON.parse(localStorage.getItem('us_cart')) || []; } catch {}
+  const total = cart.reduce((s, i) => s + (i.qty || 1), 0);
+  const el = document.getElementById('cart-count');
+  if (el) {
+    el.textContent = total;
+    el.classList.toggle('visible', total > 0);
+  }
+}
+updateCartCount();
 
 const toast = document.getElementById('toast');
 let toastTimer;
 grid.addEventListener('click', (e) => {
   const btn = e.target.closest('.card-cta');
   if(!btn) return;
-  btn.textContent = 'Додано ✓';
-  btn.classList.add('added');
-  toast.textContent = `«${btn.dataset.name}» додано в кошик`;
-  toast.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
-  setTimeout(() => { btn.textContent = 'Додати в кошик'; btn.classList.remove('added'); }, 2400);
+  const p = products.find(x => x.name === btn.dataset.name);
+  if (p) {
+    addToCart(p);
+    btn.textContent = 'Додано ✓';
+    btn.classList.add('added');
+    toast.textContent = p.name + ' — додано в кошик';
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+    setTimeout(() => { btn.textContent = 'Додати в кошик'; btn.classList.remove('added'); }, 2400);
+  }
 });
 
 const io = new IntersectionObserver((entries) => {
