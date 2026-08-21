@@ -624,6 +624,21 @@ grid.innerHTML = products.map(p => `
   </article>
 `).join('');
 
+
+// Cart logic
+function addToCart(product) {
+  let cart = [];
+  try { cart = JSON.parse(localStorage.getItem('us_cart')) || []; } catch {}
+  const existing = cart.find(i => i.num === product.num);
+  if (existing) {
+    existing.qty = (existing.qty || 1) + 1;
+  } else {
+    cart.push({...product, qty: 1});
+  }
+  localStorage.setItem('us_cart', JSON.stringify(cart));
+  window.location.href = '/cart';
+}
+
 const toast = document.getElementById('toast');
 let toastTimer;
 grid.addEventListener('click', (e) => {

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart — Ukrainian Sisters: The Brand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Rye&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --paper:#EFE6D8;
+  --paper-2:#F8F1E4;
+  --ink:#221E1A;
+  --red:#C21E30;
+  --red-2:#8E1424;
+  --gold:#A87C2C;
+  --line:rgba(34,30,26,0.28);
+}
+body{background:var(--paper);color:var(--ink);font-family:'Jost',sans-serif;font-weight:400;min-height:100vh;}
+
+/* NAV */
+nav{
+  border-bottom:1px solid var(--line);
+  padding:18px 5vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:var(--paper-2);
+}
+.nav-logo{
+  font-family:'Unbounded',sans-serif;
+  font-weight:700;
+  font-size:13px;
+  color:var(--ink);
+  text-decoration:none;
+  letter-spacing:-.01em;
+}
+.nav-right{display:flex;align-items:center;gap:24px;}
+.nav-back{
+  font-family:'Jost',sans-serif;
+  font-size:13px;
+  color:var(--red);
+  text-decoration:none;
+  letter-spacing:.04em;
+}
+.nav-back:hover{text-decoration:underline;}
+.lang-switch{
+  font-family:'Jost',sans-serif;
+  font-size:12px;
+  font-weight:500;
+  color:var(--ink);
+  text-decoration:none;
+  border:1px solid var(--line);
+  padding:4px 10px;
+  opacity:.6;
+}
+.lang-switch:hover{opacity:1;}
+
+/* LAYOUT */
+.wrap{max-width:1100px;margin:0 auto;padding:48px 5vw 80px;}
+.cart-heading{
+  font-family:'Rye',serif;
+  font-size:clamp(24px,4vw,40px);
+  margin-bottom:40px;
+  color:var(--ink);
+}
+
+/* EMPTY STATE */
+.empty-state{
+  text-align:center;
+  padding:80px 24px;
+  border:1px solid var(--line);
+  background:var(--paper-2);
+}
+.empty-state h2{font-family:'Fraunces',serif;font-style:italic;font-size:22px;margin-bottom:12px;}
+.empty-state p{font-size:14px;opacity:.6;margin-bottom:28px;}
+.btn-primary{
+  display:inline-block;
+  font-family:'Jost',sans-serif;
+  font-weight:500;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  padding:14px 28px;
+  background:var(--ink);
+  color:var(--paper);
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  transition:background .2s;
+}
+.btn-primary:hover{background:var(--red);}
+
+/* CART GRID */
+.cart-grid{
+  display:grid;
+  grid-template-columns:1fr 380px;
+  gap:40px;
+  align-items:start;
+}
+@media(max-width:780px){
+  .cart-grid{grid-template-columns:1fr;}
+}
+
+/* ITEMS */
+.cart-items{border-top:2px solid var(--ink);}
+.cart-item{
+  display:grid;
+  grid-template-columns:90px 1fr auto;
+  gap:16px;
+  align-items:start;
+  padding:20px 0;
+  border-bottom:1px solid var(--line);
+}
+.cart-item img{
+  width:90px;
+  height:110px;
+  object-fit:cover;
+  border:1px solid var(--line);
+}
+.item-info{}
+.item-num{font-size:11px;opacity:.5;letter-spacing:.1em;margin-bottom:4px;}
+.item-name{
+  font-family:'Rye',serif;
+  font-size:15px;
+  margin-bottom:4px;
+}
+.item-material{font-size:12px;opacity:.55;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
+.item-qty{display:flex;align-items:center;gap:8px;margin-top:8px;}
+.qty-btn{
+  width:28px;height:28px;
+  border:1px solid var(--line);
+  background:transparent;
+  font-size:16px;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--ink);
+}
+.qty-btn:hover{background:var(--ink);color:var(--paper);}
+.qty-num{font-size:14px;font-weight:500;min-width:20px;text-align:center;}
+.item-right{text-align:right;}
+.item-price{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:17px;
+  margin-bottom:8px;
+}
+.item-remove{
+  font-size:11px;
+  opacity:.4;
+  cursor:pointer;
+  background:none;
+  border:none;
+  color:var(--ink);
+  text-decoration:underline;
+  padding:0;
+}
+.item-remove:hover{opacity:.8;color:var(--red);}
+
+/* SUMMARY + FORM */
+.cart-aside{}
+.summary-box{
+  background:var(--paper-2);
+  border:1px solid var(--line);
+  padding:24px;
+  margin-bottom:24px;
+}
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  padding:8px 0;
+  border-bottom:1px solid var(--line);
+}
+.summary-row:last-child{border-bottom:none;}
+.summary-total{
+  font-family:'Rye',serif;
+  font-size:18px;
+}
+.summary-note{
+  font-size:11.5px;
+  opacity:.55;
+  margin-top:12px;
+  line-height:1.5;
+}
+.donation-note{
+  font-size:12px;
+  color:var(--red);
+  font-weight:500;
+  margin-top:8px;
+}
+
+/* FORM */
+.form-title{
+  font-family:'Rye',serif;
+  font-size:17px;
+  margin-bottom:18px;
+  padding-top:4px;
+}
+.form-group{margin-bottom:14px;}
+.form-group label{
+  display:block;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  opacity:.55;
+  margin-bottom:5px;
+}
+.form-group input,
+.form-group textarea{
+  width:100%;
+  padding:11px 14px;
+  border:1px solid var(--line);
+  background:var(--paper);
+  font-family:'Jost',sans-serif;
+  font-size:14px;
+  color:var(--ink);
+  outline:none;
+}
+.form-group input:focus,
+.form-group textarea:focus{border-color:var(--ink);}
+.form-group textarea{height:80px;resize:vertical;}
+.pay-btn{
+  width:100%;
+  padding:16px;
+  background:var(--red);
+  color:var(--paper);
+  font-family:'Jost',sans-serif;
+  font-weight:600;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  border:none;
+  cursor:pointer;
+  margin-top:8px;
+  transition:background .2s;
+}
+.pay-btn:hover{background:var(--red-2);}
+.pay-btn:disabled{background:var(--line);cursor:not-allowed;}
+.pay-note{
+  font-size:11px;
+  opacity:.5;
+  margin-top:10px;
+  line-height:1.5;
+  text-align:center;
+}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--line);
+  padding:20px 5vw;
+  font-size:12px;
+  opacity:.5;
+  text-align:center;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/the-brand">Ukrainian Sisters: The Brand</a>
+  <div class="nav-right">
+    <a class="nav-back" href="the-brand.html">← Back to catalogue</a>
+    <a class="lang-switch" href="/the-brand">UA</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <h1 class="cart-heading">Your cart</h1>
+
+  <!-- EMPTY STATE (shown when cart is empty) -->
+  <div class="empty-state" id="empty-state" style="display:none;">
+    <h2>Your cart is empty</h2>
+    <p>Go back to the catalogue and choose your gloves</p>
+    <a class="btn-primary" href="the-brand-en.html">View catalogue</a>
+  </div>
+
+  <!-- CART CONTENT -->
+  <div class="cart-grid" id="cart-content">
+
+    <!-- ITEMS LIST -->
+    <div>
+      <div class="cart-items" id="cart-items-list"></div>
+    </div>
+
+    <!-- ASIDE: summary + form -->
+    <div class="cart-aside">
+      <div class="summary-box">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="subtotal-val">—</span>
+        </div>
+        <div class="summary-row">
+          <span>Delivery included</span>
+          <span>✓</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-total">Total</span>
+          <span class="summary-total" id="total-val">—</span>
+        </div>
+        <p class="donation-note">♥ 50% of the total — donation to Ukrainian Sisters</p>
+      </div>
+
+      <div class="form-title">Your details</div>
+      <form id="order-form" onsubmit="submitOrder(event)">
+        <div class="form-group">
+          <label>Full name</label>
+          <input type="text" id="f-name" required placeholder="Anna Kovalenko">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="f-email" required placeholder="anna@email.com">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" id="f-phone" placeholder="+380 00 000 0000">
+        </div>
+        <div class="form-group">
+          <label>Delivery address (country, city, street)</label>
+          <input type="text" id="f-address" required placeholder="Ukraine, Kyiv, Khreshchatyk 1">
+        </div>
+        <div class="form-group">
+          <label>Order comment (optional)</label>
+          <textarea id="f-comment" placeholder="..."></textarea>
+        </div>
+        <button class="pay-btn" type="submit" id="pay-btn">Pay via WayForPay</button>
+        <p class="pay-note">Secure card payment. After confirming your order you will receive a confirmation email.</p>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<footer>© 2026 Ukrainian Sisters: The Brand. Made in Ukraine with love.</footer>
+
+<script>
+// ── Cart state from localStorage ──────────────────────────────────
+const CART_KEY = 'us_cart';
+
+function getCart() {
+  try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
+  catch { return []; }
+}
+
+function saveCart(cart) {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function formatPrice(p) {
+  // p is string like "3 550 ₴" or "€79"
+  return p;
+}
+
+function calcTotal(cart) {
+  // Extract numeric value from price string
+  let total = 0;
+  cart.forEach(item => {
+    const price = item.price || '';
+    const num = parseFloat(price.replace(/[^0-9.]/g, '').replace(/\s/g,''));
+    total += (isNaN(num) ? 0 : num) * (item.qty || 1);
+  });
+  // Detect currency
+  const sample = (cart[0] || {}).price || '';
+  const currency = sample.includes('€') ? '€' : '₴';
+  if (currency === '€') {
+    return '€' + total;
+  } else {
+    return total.toLocaleString('uk-UA') + ' ₴';
+  }
+}
+
+function renderCart() {
+  const cart = getCart();
+  const emptyEl = document.getElementById('empty-state');
+  const contentEl = document.getElementById('cart-content');
+  const listEl = document.getElementById('cart-items-list');
+
+  if (!cart.length) {
+    emptyEl.style.display = 'block';
+    contentEl.style.display = 'none';
+    return;
+  }
+  emptyEl.style.display = 'none';
+  contentEl.style.display = 'grid';
+
+  listEl.innerHTML = cart.map((item, i) => `
+    <div class="cart-item">
+      <img src="${item.img || ''}" alt="${item.name}">
+      <div class="item-info">
+        <div class="item-num">№ ${item.num}</div>
+        <div class="item-name">${item.name}</div>
+        <div class="item-material">${item.material}</div>
+        <div class="item-qty">
+          <button class="qty-btn" onclick="changeQty(${i}, -1)">−</button>
+          <span class="qty-num">${item.qty || 1}</span>
+          <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
+        </div>
+      </div>
+      <div class="item-right">
+        <div class="item-price">${item.price}</div>
+        <button class="item-remove" onclick="removeItem(${i})">Remove</button>
+      </div>
+    </div>
+  `).join('');
+
+  const total = calcTotal(cart);
+  document.getElementById('subtotal-val').textContent = total;
+  document.getElementById('total-val').textContent = total;
+}
+
+function changeQty(i, delta) {
+  const cart = getCart();
+  cart[i].qty = Math.max(1, (cart[i].qty || 1) + delta);
+  saveCart(cart);
+  renderCart();
+}
+
+function removeItem(i) {
+  const cart = getCart();
+  cart.splice(i, 1);
+  saveCart(cart);
+  renderCart();
+}
+
+function submitOrder(e) {
+  e.preventDefault();
+  const btn = document.getElementById('pay-btn');
+  btn.disabled = true;
+  btn.textContent = '...';
+
+  const cart = getCart();
+  const order = {
+    name: document.getElementById('f-name').value,
+    email: document.getElementById('f-email').value,
+    phone: document.getElementById('f-phone').value,
+    address: document.getElementById('f-address').value,
+    comment: document.getElementById('f-comment').value,
+    items: cart,
+    total: calcTotal(cart),
+  };
+
+  // WayForPay integration placeholder
+  // TODO: replace with real merchant account + server-side signature
+  const wayforpay = {
+    merchantAccount: 'YOUR_MERCHANT_ACCOUNT',
+    merchantDomainName: 'ukrainiansisters.com',
+    orderReference: 'US-' + Date.now(),
+    orderDate: Math.floor(Date.now() / 1000),
+    amount: cart.reduce((s, i) => s + parseFloat((i.price||'0').replace(/[^0-9.]/g,'')), 0) * (cart[0] && cart[0].price.includes('€') ? 42 : 1),
+    currency: cart[0] && cart[0].price.includes('€') ? 'UAH' : 'UAH',
+    productName: cart.map(i => i.name),
+    productCount: cart.map(i => i.qty || 1),
+    productPrice: cart.map(i => parseFloat((i.price||'0').replace(/[^0-9.]/g,''))),
+  };
+
+  // For now — send order to email via mailto
+  const subject = encodeURIComponent('Замовлення Ukrainian Sisters: The Brand');
+  const body = encodeURIComponent(
+    `Ім'я: ${order.name}\nEmail: ${order.email}\nТелефон: ${order.phone}\nАдреса: ${order.address}\nКоментар: ${order.comment}\n\nТовари:\n` +
+    cart.map(i => `- ${i.name} (${i.material}) x${i.qty||1} — ${i.price}`).join('\n') +
+    `\n\nРазом: ${calcTotal(cart)}`
+  );
+  window.location.href = `mailto:your@ukrainiansisters.com?subject=${subject}&body=${body}`;
+
+  btn.disabled = false;
+  btn.textContent = 'Pay via WayForPay';
+}
+
+// Init
+renderCart();
+</script>
+</body>
+</html>
