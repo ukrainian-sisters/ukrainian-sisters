@@ -10,6 +10,7 @@
     { "src": "/transparency", "dest": "/transparency.html" },
     { "src": "/donate", "dest": "/help.html" },
     { "src": "/donate-page", "dest": "/help.html" },
-    { "src": "/the-brand", "dest": "/the-brand.html" }
+    { "src": "/the-brand", "dest": "/the-brand.html" },
+    { "src": "/the-brand/en", "dest": "/the-brand-en.html" }
   ]
 }
