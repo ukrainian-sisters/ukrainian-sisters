@@ -52,6 +52,22 @@
     {
       "src": "/cart/en",
       "dest": "/cart-en.html"
+    },
+    {
+      "src": "/terms",
+      "dest": "/terms.html"
+    },
+    {
+      "src": "/terms/en",
+      "dest": "/terms-en.html"
+    },
+    {
+      "src": "/refund",
+      "dest": "/refund.html"
+    },
+    {
+      "src": "/refund/en",
+      "dest": "/refund-en.html"
     }
   ]
 }

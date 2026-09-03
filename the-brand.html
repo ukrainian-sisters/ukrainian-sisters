@@ -342,35 +342,10 @@
     *{ transition:none !important; animation:none !important; }
   }
 
-  .cart-icon-btn {
-    position: relative;
-    background: none;
-    border: 1px solid var(--line);
-    padding: 6px 12px;
-    cursor: pointer;
-    font-family: 'Jost', sans-serif;
-    font-size: 13px;
-    color: var(--ink);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: background .2s;
-  }
-  .cart-icon-btn:hover { background: var(--ink); color: var(--paper); }
-  .cart-count {
-    background: var(--red);
-    color: white;
-    border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    font-size: 10px;
-    font-weight: 700;
-    align-items: center;
-    justify-content: center;
-    display: none;
-  }
-  .cart-count.visible { display: flex; }
+  .cart-icon-btn{position:relative;background:none;border:1px solid var(--line);padding:6px 12px;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:6px;transition:background .2s;}
+  .cart-icon-btn:hover{background:var(--ink);color:var(--paper);}
+  .cart-count{background:var(--red);color:white;border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:700;align-items:center;justify-content:center;display:none;}
+  .cart-count.visible{display:flex;}
 </style>
 </head>
 <body>
@@ -485,7 +460,7 @@
       <div class="reveal">
         <span class="eyebrow" style="display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:14px;">Про бренд</span>
         <h2 class="display">Ukrainian Sisters: The Brand — це більше ніж рукавички.</h2>
-        <p>Це слово про нашу жінку.<br><br><a href="https://www.instagram.com/ukrainiansisters" target="_blank" style="color:var(--red);font-weight:600;text-decoration:none;">@ukrainiansisters</a> підтримує соло-матерів в Україні — тих, хто виховує дітей сам, хто тримає дім, хто щодня вибирає гідність. Понад 130 000 жінок у базі організації. Кризова підтримка, ментальне здоров'я, працевлаштування, адвокація прав — це наша робота.<br><br><a href="https://www.instagram.com/forma.thebrand" target="_blank" style="color:var(--red);font-weight:600;text-decoration:none;">forma the brand</a> — бренд вишитих рукавичок. Кожна пара вишита вручну.<br><br><div style="border-left:2px solid var(--red);padding-left:16px;margin:20px 0;"><strong>Художник колекції</strong><br>Тетяна Перегенська — тату-культуролог, дослідниця українського орнаменту.<br><a href="https://www.instagram.com/tanya_tattooartist" target="_blank" style="color:var(--red);text-decoration:none;">@tanya_tattooartist</a></div><br><br>Разом ми робимо рукавички, які носить жінка — вкорінена. Вільна. Не одна.<br><br>Кожна рукавичка — це символ і донат. Це не просто аксесуар — це СЛОВО про НАШУ ЖІНКУ.</p>
+        <p>Це слово про нашу жінку.<br><br><a href="https://www.instagram.com/ukrainiansisters" target="_blank" style="color:var(--red);font-weight:600;text-decoration:none;">@ukrainiansisters</a> підтримує соло-матерів в Україні — тих, хто виховує дітей сам, хто тримає дім, хто щодня вибирає гідність. Понад 130 000 жінок у базі організації. Кризова підтримка, ментальне здоров'я, працевлаштування, адвокація прав — це наша робота.<br><br>Виробництво — Кривий Ріг.<br><br><div style="border-left:2px solid var(--red);padding-left:16px;margin:20px 0;"><strong>Художник колекції</strong><br>Тетяна Перегенська — тату-культуролог, дослідниця українського орнаменту.<br><a href="https://www.instagram.com/tanya_tattooartist" target="_blank" style="color:var(--red);text-decoration:none;">@tanya_tattooartist</a></div><br><br>Разом ми робимо рукавички, які носить жінка — вкорінена. Вільна. Не одна.<br><br>Кожна рукавичка — це символ і донат. Це не просто аксесуар — це СЛОВО про НАШУ ЖІНКУ.</p>
         <p class="quote">«Ти не одна — головне послання колекції».</p>
         <p>Кожен малюнок має фактуру — живу нерівність, яку відчуваєш на дотик. Дизайни повторюються між моделями навмисно — один ескіз живе в кількох матеріалах: сітка nude, чорна екошкіра, кремова екошкіра.<br>Обирайте не малюнок — обирайте код, який відгукується.</p>
       </div>
@@ -542,10 +517,16 @@
         </div>
       </div>
     </div>
-    <div class="foot-bottom">
+    <div class="foot-bottom" style="flex-direction:column;gap:8px;">
+      <div style="display:flex;gap:20px;font-size:11px;opacity:.6;">
+        <a href="/terms" style="color:var(--ink);text-decoration:underline;">Умови та правила</a>
+        <a href="/refund" style="color:var(--ink);text-decoration:underline;">Політика повернення</a>
+      </div>
+      <div>
       <span>© 2026 Ukrainian Sisters: The Brand. Всі рукавички — в одному екземплярі.</span>
       <span>Каталог № 001–009</span>
     </div>
+</div>
   </div>
 </footer>
 
@@ -656,44 +637,28 @@ grid.innerHTML = products.map(p => `
 `).join('');
 
 
-function addToCart(product) {
-  let cart = [];
-  try { cart = JSON.parse(localStorage.getItem('us_cart')) || []; } catch {}
-  const existing = cart.find(i => i.num === product.num);
-  if (existing) { existing.qty = (existing.qty || 1) + 1; }
-  else { cart.push({...product, qty: 1}); }
-  localStorage.setItem('us_cart', JSON.stringify(cart));
-  updateCartCount();
+function addToCart(product){
+  let cart=[];try{cart=JSON.parse(localStorage.getItem('us_cart'))||[];}catch{}
+  const ex=cart.find(i=>i.num===product.num);
+  if(ex){ex.qty=(ex.qty||1)+1;}else{cart.push({...product,qty:1});}
+  localStorage.setItem('us_cart',JSON.stringify(cart));updateCartCount();
 }
-
-function updateCartCount() {
-  let cart = [];
-  try { cart = JSON.parse(localStorage.getItem('us_cart')) || []; } catch {}
-  const total = cart.reduce((s, i) => s + (i.qty || 1), 0);
-  const el = document.getElementById('cart-count');
-  if (el) {
-    el.textContent = total;
-    el.classList.toggle('visible', total > 0);
-  }
+function updateCartCount(){
+  let cart=[];try{cart=JSON.parse(localStorage.getItem('us_cart'))||[];}catch{}
+  const total=cart.reduce((s,i)=>s+(i.qty||1),0);
+  const el=document.getElementById('cart-count');
+  if(el){el.textContent=total;el.classList.toggle('visible',total>0);}
 }
 updateCartCount();
-
-const toast = document.getElementById('toast');
+const toast=document.getElementById('toast');
 let toastTimer;
-grid.addEventListener('click', (e) => {
-  const btn = e.target.closest('.card-cta');
-  if(!btn) return;
-  const p = products.find(x => x.name === btn.dataset.name);
-  if (p) {
-    addToCart(p);
-    btn.textContent = 'Додано ✓';
-    btn.classList.add('added');
-    toast.textContent = p.name + ' — додано в кошик';
-    toast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
-    setTimeout(() => { btn.textContent = 'Додати в кошик'; btn.classList.remove('added'); }, 2400);
-  }
+grid.addEventListener('click',(e)=>{
+  const btn=e.target.closest('.card-cta');if(!btn)return;
+  const p=products.find(x=>x.name===btn.dataset.name);
+  if(p){addToCart(p);btn.textContent='Додано ✓';btn.classList.add('added');
+  toast.textContent=p.name+' — додано в кошик';toast.classList.add('show');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);
+  setTimeout(()=>{btn.textContent='Додати в кошик';btn.classList.remove('added');},2400);}
 });
 
 const io = new IntersectionObserver((entries) => {
