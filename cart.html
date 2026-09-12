@@ -430,41 +430,74 @@ function submitOrder(e) {
   btn.textContent = '...';
 
   const cart = getCart();
-  const order = {
+  if (!cart.length) return;
+
+  const orderData = {
     name: document.getElementById('f-name').value,
     email: document.getElementById('f-email').value,
     phone: document.getElementById('f-phone').value,
     address: document.getElementById('f-address').value,
     comment: document.getElementById('f-comment').value,
     items: cart,
-    total: calcTotal(cart),
+    lang: 'ua',
   };
 
-  // WayForPay integration placeholder
-  // TODO: replace with real merchant account + server-side signature
-  const wayforpay = {
-    merchantAccount: 'YOUR_MERCHANT_ACCOUNT',
-    merchantDomainName: 'ukrainiansisters.com',
-    orderReference: 'US-' + Date.now(),
-    orderDate: Math.floor(Date.now() / 1000),
-    amount: cart.reduce((s, i) => s + parseFloat((i.price||'0').replace(/[^0-9.]/g,'')), 0) * (cart[0] && cart[0].price.includes('€') ? 42 : 1),
-    currency: cart[0] && cart[0].price.includes('€') ? 'UAH' : 'UAH',
-    productName: cart.map(i => i.name),
-    productCount: cart.map(i => i.qty || 1),
-    productPrice: cart.map(i => parseFloat((i.price||'0').replace(/[^0-9.]/g,''))),
-  };
-
-  // For now — send order to email via mailto
-  const subject = encodeURIComponent('Замовлення Ukrainian Sisters: The Brand');
-  const body = encodeURIComponent(
-    `Ім'я: ${order.name}\nEmail: ${order.email}\nТелефон: ${order.phone}\nАдреса: ${order.address}\nКоментар: ${order.comment}\n\nТовари:\n` +
-    cart.map(i => `- ${i.name} (${i.material}) x${i.qty||1} — ${i.price}`).join('\n') +
-    `\n\nРазом: ${calcTotal(cart)}`
-  );
-  window.location.href = `mailto:your@ukrainiansisters.com?subject=${subject}&body=${body}`;
-
-  btn.disabled = false;
-  btn.textContent = 'Оплатити через WayForPay';
+  fetch('/api/wayforpay', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(orderData),
+  })
+  .then(r => r.json())
+  .then(data => {
+    if (data.error) throw new Error(data.error);
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://secure.wayforpay.com/pay';
+    const fd = data.formData;
+    const fields = {
+      merchantAccount: fd.merchantAccount,
+      merchantDomainName: fd.merchantDomainName,
+      merchantSignature: fd.merchantSignature,
+      orderReference: fd.orderReference,
+      orderDate: fd.orderDate,
+      amount: fd.amount,
+      currency: fd.currency,
+      orderTimeout: fd.orderTimeout,
+      clientFirstName: fd.clientFirstName,
+      clientLastName: fd.clientLastName,
+      clientEmail: fd.clientEmail,
+      clientPhone: fd.clientPhone,
+      deliveryCity: fd.deliveryCity,
+      language: fd.language,
+      returnUrl: fd.returnUrl,
+      serviceUrl: fd.serviceUrl,
+    };
+    Object.entries(fields).forEach(([key, val]) => {
+      const input = document.createElement('input');
+      input.type = 'hidden'; input.name = key; input.value = val;
+      form.appendChild(input);
+    });
+    fd.productName.forEach(v => {
+      const i = document.createElement('input');
+      i.type='hidden'; i.name='productName[]'; i.value=v; form.appendChild(i);
+    });
+    fd.productCount.forEach(v => {
+      const i = document.createElement('input');
+      i.type='hidden'; i.name='productCount[]'; i.value=v; form.appendChild(i);
+    });
+    fd.productPrice.forEach(v => {
+      const i = document.createElement('input');
+      i.type='hidden'; i.name='productPrice[]'; i.value=v; form.appendChild(i);
+    });
+    document.body.appendChild(form);
+    form.submit();
+  })
+  .catch(err => {
+    console.error(err);
+    btn.disabled = false;
+    btn.textContent = 'Оплатити через WayForPay';
+    alert('Помилка. Спробуйте ще раз або напишіть нам.');
+  });
 }
 
 // Init
