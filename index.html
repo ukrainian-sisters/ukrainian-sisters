@@ -888,15 +888,38 @@ h2 {
   background:white;
   border:1.5px solid var(--border-blue);
   border-radius:100px;
-  padding:9px 22px;
+  padding:9px 22px 9px 18px;
   font-size:13px; font-weight:600;
   color:var(--blue);
-  transition:all 0.18s;
+  transition:all 0.2s;
   text-decoration:none;
-  display:inline-block;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
 }
 
-.partner-pill:hover { background:var(--blue-light); border-color:var(--blue); }
+.partner-pill::after {
+  content: '↗';
+  font-size:11px;
+  opacity:0;
+  transform:translateX(-4px);
+  transition:all 0.18s;
+  color:var(--pink);
+}
+
+.partner-pill:hover {
+  background:var(--pink-light);
+  border-color:var(--pink);
+  color:var(--pink-dark);
+  transform:translateY(-2px);
+  box-shadow:0 4px 16px rgba(201,71,116,0.12);
+}
+
+.partner-pill:hover::after {
+  opacity:1;
+  transform:translateX(0);
+}
 
 /* ── CTA ── */
 .cta-section {
@@ -1078,6 +1101,33 @@ footer { background:#12101A; padding:56px 6% 32px; display:block; }
 .footer-legal a:hover { color:#D78320; }
 @media (max-width:900px) { .footer-top { grid-template-columns:1fr 1fr; gap:32px; } }
 @media (max-width:600px) { .footer-top { grid-template-columns:1fr; } .footer-bottom { flex-direction:column; text-align:center; } .footer-legal { justify-content:center; } }
+
+/* Beneficiary list — elegant style */
+.bene-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+  margin-top: 24px;
+}
+
+.bene-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--charcoal);
+  line-height: 1.5;
+}
+
+.bene-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pink);
+  flex-shrink: 0;
+}
+
 </style>
 </head>
 <body>
@@ -1115,8 +1165,8 @@ footer { background:#12101A; padding:56px 6% 32px; display:block; }
 
     <!-- Language -->
     <div class="nav-lang">
-      <button class="lang-btn active">УКР</button>
-      <button class="lang-btn" onclick="window.location.href='https://ukrainiansisters.com/en/'">ENG</button>
+      <a href="/" class="lang-btn active" style="text-decoration:none;">УКР</a>
+      <a href="/en" class="lang-btn" style="text-decoration:none;">ENG</a>
     </div>
 
     <div class="nav-divider"></div>
@@ -1139,7 +1189,7 @@ footer { background:#12101A; padding:56px 6% 32px; display:block; }
     <h1>Ти <em>ніколи</em> не сама,<br>сестро.</h1>
     <p class="hero-sub">«Українські сестри» об'єднують світ навколо підтримки соло-матерів — кризова допомога, ментальне здоров'я, працевлаштування та жива спільнота для тих, хто виховує дітей самотужки.</p>
     <div class="hero-actions">
-      <a href="help.html#donate" class="btn-donate">Донат</a>
+      <a href="https://ukrainiansisters.com/donate-page/" class="btn-hero-primary" target="_blank">Підтримати</a>
       <a href="#programs" class="btn-hero-ghost" onclick="document.getElementById('programs').scrollIntoView({behavior:'smooth'});return false;">Наші програми</a>
     </div>
   </div>
@@ -1254,17 +1304,17 @@ footer { background:#12101A; padding:56px 6% 32px; display:block; }
   <div class="bene-grid">
     <div>
       <p>Для нас «соло-мами» — це жінки, які де-юре або де-факто самостійно виховують і забезпечують своїх дітей — особливо ті, хто перебуває в тимчасовій кризі або складних життєвих обставинах.</p>
-      <div class="bene-tags">
-        <span class="bene-tag">Незаміжні</span>
-        <span class="bene-tag">Розлучені</span>
-        <span class="bene-tag">Вдови</span>
-        <span class="bene-tag">Дружини військових</span>
-        <span class="bene-tag">Мами загиблих на війні</span>
-        <span class="bene-tag">ВПО</span>
-        <span class="bene-tag">Мами дітей з інвалідністю</span>
-        <span class="bene-tag">Мами-біженки</span>
-        <span class="bene-tag">Вагітні без підтримки</span>
-        <span class="bene-tag">Соло-опікунки</span>
+      <div class="bene-list">
+        <div class="bene-item"><span class="bene-dot"></span>Незаміжні</div>
+        <div class="bene-item"><span class="bene-dot"></span>Розлучені</div>
+        <div class="bene-item"><span class="bene-dot"></span>Вдови</div>
+        <div class="bene-item"><span class="bene-dot"></span>Дружини військових</div>
+        <div class="bene-item"><span class="bene-dot"></span>Мами загиблих на війні</div>
+        <div class="bene-item"><span class="bene-dot"></span>ВПО</div>
+        <div class="bene-item"><span class="bene-dot"></span>Мами дітей з інвалідністю</div>
+        <div class="bene-item"><span class="bene-dot"></span>Мами-біженки</div>
+        <div class="bene-item"><span class="bene-dot"></span>Вагітні без підтримки</div>
+        <div class="bene-item"><span class="bene-dot"></span>Соло-опікунки</div>
       </div>
     </div>
     <div class="bene-card">
@@ -1386,7 +1436,7 @@ footer { background:#12101A; padding:56px 6% 32px; display:block; }
     <div class="cta-btns">
       <a href="https://ukrainiansisters.com/en/donate-page/" class="btn-cta-main">Задонатити</a>
       <a href="https://t.me/UaSisters" class="btn-cta-ghost">Написати у Telegram</a>
-      <a href="mailto:ukraniansisters@gmail.com" class="btn-cta-ghost">Написати на пошту</a>
+      <a href="https://mail.google.com/mail/?view=cm&to=ukraniansisters@gmail.com&su=Звернення до Українських сестер" target="_blank" class="btn-cta-ghost">✉️ ukraniansisters@gmail.com</a>
     </div>
     <div class="socials-row">
       <a href="https://www.facebook.com/share/1BazsYt5Mf/" class="social-lnk">Facebook</a>
