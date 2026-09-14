@@ -7,6 +7,10 @@
     { "src": "/en/transparency", "dest": "/transparency_en.html" },
     { "src": "/en/international", "dest": "/international_en.html" },
     { "src": "/en/development", "dest": "/development_en.html" },
+    { "src": "/en/cart", "dest": "/cart-en.html" },
+    { "src": "/en/terms", "dest": "/terms-en.html" },
+    { "src": "/en/refund", "dest": "/refund-en.html" },
+    { "src": "/en/the-brand", "dest": "/the-brand-en.html" },
     { "src": "/", "dest": "/index.html" },
     { "src": "/about", "dest": "/about.html" },
     { "src": "/projects", "dest": "/projects.html" },
@@ -15,6 +19,10 @@
     { "src": "/transparency", "dest": "/transparency.html" },
     { "src": "/international", "dest": "/international.html" },
     { "src": "/development", "dest": "/development.html" },
+    { "src": "/cart", "dest": "/cart.html" },
+    { "src": "/terms", "dest": "/terms.html" },
+    { "src": "/refund", "dest": "/refund.html" },
+    { "src": "/the-brand", "dest": "/the-brand.html" },
     { "src": "/donate", "dest": "/help.html" },
     { "src": "/donate-page", "dest": "/help.html" }
   ]
