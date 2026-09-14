@@ -1233,8 +1233,8 @@ footer { background:#12101A; padding:56px 6% 32px; display:block; }
       <span class="hero-eyebrow-dot"></span>
       Благодійна організація · Україна · з 2022 року
     </div>
-    <h1>Ти <em>ніколи</em> не сама,<br>сестро.</h1>
-    <p class="hero-sub">«Українські сестри» об'єднують світ навколо підтримки соло-матерів - кризова допомога, ментальне здоров'я, працевлаштування та жива спільнота для тих, хто виховує дітей самотужки.</p>
+    <h1>Ти <span style="color:var(--blue);font-style:italic;font-family:'Cormorant Garamond',serif;">ніколи</span> <span style="color:var(--orange);font-style:italic;font-family:'Cormorant Garamond',serif;">не сама</span>,<br>сестро.</h1>
+    <p class="hero-sub">«Українські сестри» об'єднують світ навколо підтримки соло-матерів - кризова допомога, ментальне здоров'я, працевлаштування та жива спільнота для тих, хто самостійно виховує дітей.</p>
     <div class="hero-actions">
       <a href="/help#donate" class="btn-hero-primary" target="_blank">Підтримати</a>
       <a href="#programs" class="btn-hero-ghost" onclick="document.getElementById('programs').scrollIntoView({behavior:'smooth'});return false;">Наші програми</a>
@@ -1353,11 +1353,11 @@ footer { background:#12101A; padding:56px 6% 32px; display:block; }
         </div>
         <div class="bene-card">
           <span class="bene-icon">🕊️</span>
-          <span>Вдови та мами загиблих на війні</span>
+          <span>Вдови</span>
         </div>
         <div class="bene-card">
           <span class="bene-icon">🪖</span>
-          <span>Дружини та партнерки військових</span>
+          <span>Дружини та партнерки військовослужбовців</span>
         </div>
         <div class="bene-card">
           <span class="bene-icon">🤰</span>
@@ -1369,11 +1369,11 @@ footer { background:#12101A; padding:56px 6% 32px; display:block; }
         </div>
         <div class="bene-card">
           <span class="bene-icon">🏠</span>
-          <span>ВПО та мами-біженки</span>
+          <span>ВПО та переміщені соло-мами</span>
         </div>
       </div>
 
-      <a href="https://drive.google.com/file/d/1tOxZ_5jtxDICGVsTjjaR9t1hGHbTi5XW/view" target="_blank" class="bene-more-link">
+      <a href="https://drive.google.com/file/d/1M7qcqLKhRmzHHaZ_ufEIsNC4YhZx4p-5/view?usp=sharing" target="_blank" class="bene-more-link">
         Повний перелік категорій — у нашому стратегічному плані →
       </a>
     </div>
@@ -1410,7 +1410,7 @@ footer { background:#12101A; padding:56px 6% 32px; display:block; }
       <div class="goal-card"><div class="goal-pip"></div><div><h4>Імпакт</h4><p>150 000+ соло-мам і 20 000+ дітей соло-батьків підтримано по всій Україні та за кордоном.</p></div></div>
       <div class="goal-card"><div class="goal-pip"></div><div><h4>Регіональна присутність</h4><p>5 регіональних центрів підтримки. 10 дитячих кімнат у громадах. Партнерства у 10 регіонах.</p></div></div>
       <div class="goal-card"><div class="goal-pip"></div><div><h4>Перемога в адвокації</h4><p>Визнання статусу «соло-мама» на держрівні. Всеукраїнська кампанія «Соло-сім'я = повноцінна сім'я».</p></div></div>
-      <div class="goal-card"><div class="goal-pip"></div><div><h4>Міжнародне визнання</h4><p>1–2 представництва за кордоном. Вихід на глобальну арену (WEF 2027). Мережа 50 менторок.</p></div></div>
+      <div class="goal-card"><div class="goal-pip"></div><div><h4>Міжнародне визнання</h4><p>1–2 представництва за кордоном. Вихід на глобальну арену (WEF 2028). Мережа 50 менторок.</p></div></div>
     </div>
   </div>
 </section>
@@ -1584,6 +1584,58 @@ function switchTab(btn, id) {
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
 }
+</script>
+
+<!-- SEARCH OVERLAY -->
+<div id="search-overlay" style="display:none;position:fixed;inset:0;background:rgba(28,24,34,0.7);backdrop-filter:blur(6px);z-index:500;align-items:flex-start;justify-content:center;padding-top:100px;">
+  <div style="background:white;border-radius:20px;padding:24px;width:90%;max-width:560px;position:relative;">
+    <button onclick="toggleSearch()" style="position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:var(--bg);border:none;cursor:pointer;font-size:16px;">✕</button>
+    <div style="display:flex;align-items:center;gap:12px;border:1.5px solid var(--border-blue);border-radius:100px;padding:10px 20px;">
+      <svg viewBox="0 0 24 24" width="16" height="16" style="stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="search-input" type="text" placeholder="Пошук на сайті..." oninput="doSearch(this.value)" style="border:none;outline:none;font-size:15px;width:100%;font-family:'Nunito',sans-serif;color:var(--charcoal);" autofocus/>
+    </div>
+    <div id="search-results" style="margin-top:16px;max-height:300px;overflow-y:auto;"></div>
+  </div>
+</div>
+
+<script>
+function toggleSearch() {
+  const overlay = document.getElementById('search-overlay');
+  const isOpen = overlay.style.display === 'flex';
+  overlay.style.display = isOpen ? 'none' : 'flex';
+  if (!isOpen) setTimeout(() => document.getElementById('search-input').focus(), 50);
+}
+
+const SEARCH_INDEX = [
+  { title: 'Головна', url: '/', text: 'Ти ніколи не сама соло-мами підтримка' },
+  { title: 'Про нас', url: '/about', text: 'команда місія візія Олеся Галина' },
+  { title: 'Проєкти', url: '/projects', text: 'проєкти амазонки супердзвінок підтримка' },
+  { title: 'Новини', url: '/news', text: 'новини медіа преса Instagram Facebook' },
+  { title: 'Як допомогти', url: '/help', text: 'донат волонтер партнер амбасадор' },
+  { title: 'Прозорість', url: '/transparency', text: 'звіти нагороди партнери відгуки фото' },
+];
+
+function doSearch(q) {
+  const res = document.getElementById('search-results');
+  if (!q.trim()) { res.innerHTML = ''; return; }
+  const matches = SEARCH_INDEX.filter(p =>
+    p.title.toLowerCase().includes(q.toLowerCase()) ||
+    p.text.toLowerCase().includes(q.toLowerCase())
+  );
+  if (matches.length === 0) {
+    res.innerHTML = '<p style="color:var(--muted);font-size:14px;padding:8px 0;">Нічого не знайдено</p>';
+    return;
+  }
+  res.innerHTML = matches.map(p => `
+    <a href="${p.url}" style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;text-decoration:none;color:var(--charcoal);transition:background 0.15s;" onmouseover="this.style.background='var(--pink-light)'" onmouseout="this.style.background='transparent'">
+      <svg viewBox="0 0 24 24" width="14" height="14" style="stroke:var(--pink);fill:none;stroke-width:2;flex-shrink:0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span style="font-size:14px;font-weight:600;">${p.title}</span>
+    </a>`).join('');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('search-overlay').style.display = 'none';
+});
 </script>
 </body>
 </html>

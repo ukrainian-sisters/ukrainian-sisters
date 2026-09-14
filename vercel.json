@@ -1,73 +1,20 @@
 {
   "version": 2,
   "routes": [
-    {
-      "src": "/api/liqpay",
-      "dest": "/api/liqpay.js"
-    },
-    {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/about",
-      "dest": "/about.html"
-    },
-    {
-      "src": "/projects",
-      "dest": "/projects.html"
-    },
-    {
-      "src": "/news",
-      "dest": "/news.html"
-    },
-    {
-      "src": "/help",
-      "dest": "/help.html"
-    },
-    {
-      "src": "/transparency",
-      "dest": "/transparency.html"
-    },
-    {
-      "src": "/donate",
-      "dest": "/help.html"
-    },
-    {
-      "src": "/donate-page",
-      "dest": "/help.html"
-    },
-    {
-      "src": "/the-brand",
-      "dest": "/the-brand.html"
-    },
-    {
-      "src": "/the-brand/en",
-      "dest": "/the-brand-en.html"
-    },
-    {
-      "src": "/cart",
-      "dest": "/cart.html"
-    },
-    {
-      "src": "/cart/en",
-      "dest": "/cart-en.html"
-    },
-    {
-      "src": "/terms",
-      "dest": "/terms.html"
-    },
-    {
-      "src": "/terms/en",
-      "dest": "/terms-en.html"
-    },
-    {
-      "src": "/refund",
-      "dest": "/refund.html"
-    },
-    {
-      "src": "/refund/en",
-      "dest": "/refund-en.html"
-    }
+    { "src": "/api/liqpay", "dest": "/api/liqpay.js" },
+    { "src": "/en", "dest": "/index_en.html" },
+    { "src": "/en/about", "dest": "/about_en.html" },
+    { "src": "/en/international", "dest": "/international_en.html" },
+    { "src": "/en/development", "dest": "/development_en.html" },
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/about", "dest": "/about.html" },
+    { "src": "/projects", "dest": "/projects.html" },
+    { "src": "/news", "dest": "/news.html" },
+    { "src": "/help", "dest": "/help.html" },
+    { "src": "/transparency", "dest": "/transparency.html" },
+    { "src": "/international", "dest": "/international.html" },
+    { "src": "/development", "dest": "/development.html" },
+    { "src": "/donate", "dest": "/help.html" },
+    { "src": "/donate-page", "dest": "/help.html" }
   ]
 }
