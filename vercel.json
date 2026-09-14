@@ -4,6 +4,7 @@
     { "src": "/api/liqpay", "dest": "/api/liqpay.js" },
     { "src": "/en", "dest": "/index_en.html" },
     { "src": "/en/about", "dest": "/about_en.html" },
+    { "src": "/en/transparency", "dest": "/transparency_en.html" },
     { "src": "/en/international", "dest": "/international_en.html" },
     { "src": "/en/development", "dest": "/development_en.html" },
     { "src": "/", "dest": "/index.html" },
