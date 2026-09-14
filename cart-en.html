@@ -254,6 +254,18 @@ footer{
   opacity:.5;
   text-align:center;
 }
+
+@media(max-width:520px){
+  .nav-logo{ font-size:10px; max-width:140px; }
+  .nav-back{ font-size:11px; }
+  .nav-right{ gap:12px; }
+  .cart-item{ grid-template-columns:70px 1fr; }
+  .item-right{ grid-column:1/-1; display:flex; justify-content:space-between; align-items:center; padding-top:4px; }
+  .cart-item img{ width:70px; height:85px; }
+  .wrap{ padding:24px 4vw 60px; }
+  .cart-heading{ font-size:22px; margin-bottom:24px; }
+  .pay-btn{ font-size:13px; padding:14px; }
+}
 </style>
 </head>
 <body>
@@ -261,7 +273,7 @@ footer{
 <nav>
   <a class="nav-logo" href="/the-brand">Ukrainian Sisters: The Brand</a>
   <div class="nav-right">
-    <a class="nav-back" href="the-brand.html">← Back to catalogue</a>
+    <a class="nav-back" href="/the-brand/en">← Back to catalogue</a>
     <a class="lang-switch" href="/the-brand">UA</a>
   </div>
 </nav>
@@ -273,7 +285,7 @@ footer{
   <div class="empty-state" id="empty-state" style="display:none;">
     <h2>Your cart is empty</h2>
     <p>Go back to the catalogue and choose your gloves</p>
-    <a class="btn-primary" href="the-brand-en.html">View catalogue</a>
+    <a class="btn-primary" href="/the-brand/en">View catalogue</a>
   </div>
 
   <!-- CART CONTENT -->
