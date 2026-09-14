@@ -179,8 +179,8 @@ footer { background:#12101A; padding:40px 6%; display:flex; align-items:center; 
     <li><a href="news.html">Новини</a></li>
     <li><a href="about.html">Про нас</a></li>
     <li><a href="help.html">Як допомогти</a></li>
-    <li><a href="transparency.html">Прозорість</a></li>
-    <li><a href="index.html#international">Міжнародна співпраця</a></li>
+    <li><a href="/transparency">Прозорість</a></li>
+    <li><a href="/international">Міжнародна співпраця</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
     <div class="nav-socials">
@@ -214,10 +214,10 @@ footer { background:#12101A; padding:40px 6%; display:flex; align-items:center; 
   <div class="filters">
     <button class="filter-btn active" onclick="filterProjects('all', this)">Усі</button>
     <div class="filter-sep"></div>
-    <button class="filter-btn f-done" onclick="filterProjects('done', this)">✓ Завершені</button>
     <button class="filter-btn f-ongoing" onclick="filterProjects('ongoing', this)">● Постійнодіючі</button>
     <button class="filter-btn f-active" onclick="filterProjects('active', this)">▶ Поточні</button>
     <button class="filter-btn f-planned" onclick="filterProjects('planned', this)">◇ Заплановані</button>
+    <button class="filter-btn f-done" onclick="filterProjects('done', this)">✓ Завершені</button>
   </div>
 </div>
 
@@ -225,204 +225,6 @@ footer { background:#12101A; padding:40px 6%; display:flex; align-items:center; 
 <section class="projects-section">
 
   <!-- ═══ ЗАВЕРШЕНІ ═══ -->
-  <div class="section-group" data-group="done">
-    <div class="group-header">
-      <span class="group-label done">Завершені</span>
-      <div class="group-title">Проєкти, що вже змінили життя</div>
-      <div class="group-line"></div>
-    </div>
-    <div class="cards-grid">
-
-      <!-- Амазонки -->
-      <div class="p-card" data-status="done">
-        <div class="p-card-top">
-          <span class="p-status done">Завершено</span>
-          <h3>Амазонки</h3>
-          <p class="p-desc">Проєкт підтримки та підсилення жінок, які демонструють силу і стійкість попри всі виклики воєнного часу. Надихаючі зустрічі, майстер-класи та підтримка спільноти.</p>
-          <div class="p-tags">
-            <span class="p-tag pink">Психічне здоров'я</span>
-            <span class="p-tag">Спільнота</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          <a href="https://ukrainiansisters.com/ukr/2024/05/26/amazons" target="_blank" class="btn-sm primary">
-            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            На сайт
-          </a>
-          
-    <div class="liqpay-mini" id="mini-amazons"><button class="lp-mini-amount lp-mini-amazons" onclick="selectMiniAmount('amazons',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-amazons selected" onclick="selectMiniAmount('amazons',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-amazons" onclick="selectMiniAmount('amazons',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('amazons', 'Амазонки')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-      <!-- Діти танцюють життя -->
-      <div class="p-card" data-status="done">
-        <div class="p-card-top">
-          <span class="p-status done">Завершено</span>
-          <h3>Діти танцюють життя</h3>
-          <p class="p-desc">Танцювальна програма для дітей соло-мам - радість руху, творчості та безпечного простору для самовираження попри всі труднощі війни.</p>
-          <div class="p-tags">
-            <span class="p-tag orange">Діти</span>
-            <span class="p-tag pink">Творчість</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          <a href="https://ukrainiansisters.com/ukr/2024/05/26/children-dance-life-dance-for-the-life-of-ukrainians" target="_blank" class="btn-sm primary">
-            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            На сайт
-          </a>
-          
-    <div class="liqpay-mini" id="mini-dance"><button class="lp-mini-amount lp-mini-dance" onclick="selectMiniAmount('dance',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-dance selected" onclick="selectMiniAmount('dance',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-dance" onclick="selectMiniAmount('dance',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('dance', 'Діти танцюють життя')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-      <!-- Тепло в долонях / Прихисток -->
-      <div class="p-card" data-status="done">
-        <div class="p-card-top">
-          <span class="p-status done">Завершено</span>
-          <h3>Тепло в долонях / Прихисток</h3>
-          <p class="p-desc">Тимчасовий прихисток і гуманітарна підтримка для сімей, що опинилися в кризових умовах - зокрема після трагедії Каховської ГЕС. 70 сімей отримали дах над головою.</p>
-          <div class="p-tags">
-            <span class="p-tag">Кризове реагування</span>
-            <span class="p-tag">ВПО</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          
-    <div class="liqpay-mini" id="mini-shelter"><button class="lp-mini-amount lp-mini-shelter" onclick="selectMiniAmount('shelter',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-shelter selected" onclick="selectMiniAmount('shelter',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-shelter" onclick="selectMiniAmount('shelter',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('shelter', 'Тепло в долонях / Прихисток')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-      <!-- Б'юті тур -->
-      <div class="p-card" data-status="done">
-        <div class="p-card-top">
-          <span class="p-status done">Завершено</span>
-          <h3>Б'юті тур</h3>
-          <p class="p-desc">Б'юті-дні у чотирьох містах для понад 700 жінок - простір турботи про себе, спілкування та відновлення. Краса як акт стійкості.</p>
-          <div class="p-tags">
-            <span class="p-tag pink">Ідентичність</span>
-            <span class="p-tag orange">4 міста</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          <a href="https://ukrainiansisters.com/ukr/2024/05/26/beauty-day" target="_blank" class="btn-sm primary">
-            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            На сайт
-          </a>
-          
-    <div class="liqpay-mini" id="mini-beauty"><button class="lp-mini-amount lp-mini-beauty" onclick="selectMiniAmount('beauty',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-beauty selected" onclick="selectMiniAmount('beauty',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-beauty" onclick="selectMiniAmount('beauty',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMini('beauty','Б\'юті тур')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-      <!-- Клуб взаємодопомоги -->
-      <div class="p-card" data-status="done">
-        <div class="p-card-top">
-          <span class="p-status done">Завершено</span>
-          <h3>Клуб взаємодопомоги для мам та дітей</h3>
-          <p class="p-desc">Безпечний простір для соло-мам і їхніх дітей - зустрічі взаємопідтримки, обмін досвідом, спільні активності та дитяча програма.</p>
-          <div class="p-tags">
-            <span class="p-tag">Спільнота</span>
-            <span class="p-tag orange">Діти</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          
-    <div class="liqpay-mini" id="mini-club1"><button class="lp-mini-amount lp-mini-club1" onclick="selectMiniAmount('club1',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-club1 selected" onclick="selectMiniAmount('club1',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-club1" onclick="selectMiniAmount('club1',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('club1', 'Клуб взаємодопомоги для мам та дітей')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-      <!-- Резиденція Санти 2024 -->
-      <div class="p-card" data-status="done">
-        <div class="p-card-top">
-          <span class="p-status done">Завершено</span>
-          <h3>Резиденція Санти 2024</h3>
-          <p class="p-desc">Новорічне свято для дітей соло-мам - казкова атмосфера, подарунки та радість для тих, кому особливо потрібна святкова магія.</p>
-          <div class="p-tags">
-            <span class="p-tag orange">Діти</span>
-            <span class="p-tag pink">Свято</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          <a href="https://ukrainiansisters.com/ukr/2025/03/24/%d1%80%d0%b5%d0%b7%d0%b8%d0%b4%d0%b5%d0%bd%d1%86%d1%96%d1%8f-%d1%81%d0%b0%d0%bd%d1%82%d0%b8" target="_blank" class="btn-sm primary">
-            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            На сайт
-          </a>
-          
-    <div class="liqpay-mini" id="mini-santa"><button class="lp-mini-amount lp-mini-santa" onclick="selectMiniAmount('santa',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-santa selected" onclick="selectMiniAmount('santa',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-santa" onclick="selectMiniAmount('santa',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('santa', 'Резиденція Санти 2024')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-      <!-- Поруч -->
-      <div class="p-card" data-status="done">
-        <div class="p-card-top">
-          <span class="p-status done">Завершено</span>
-          <h3>Поруч</h3>
-          <p class="p-desc">Проєкт психологічної та емоційної підтримки для соло-мам - відчуття, що хтось завжди поруч, навіть у найважчі моменти.</p>
-          <div class="p-tags">
-            <span class="p-tag pink">Психічне здоров'я</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          
-    <div class="liqpay-mini" id="mini-poruch"><button class="lp-mini-amount lp-mini-poruch" onclick="selectMiniAmount('poruch',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-poruch selected" onclick="selectMiniAmount('poruch',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-poruch" onclick="selectMiniAmount('poruch',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('poruch', 'Поруч')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-      <!-- Клуб взаємодопомоги 2.0 -->
-      <div class="p-card" data-status="done">
-        <div class="p-card-top">
-          <span class="p-status done">Завершено</span>
-          <h3>Клуб взаємодопомоги 2.0: Голос, Безпека і Видимість соло-мам</h3>
-          <p class="p-desc">Другий сезон клубу - поглиблений формат з фокусом на адвокацію прав, видимість соло-материнства та навички безпечної комунікації.</p>
-          <div class="p-tags">
-            <span class="p-tag">Адвокація</span>
-            <span class="p-tag pink">Спільнота</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          
-    <div class="liqpay-mini" id="mini-club2"><button class="lp-mini-amount lp-mini-club2" onclick="selectMiniAmount('club2',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-club2 selected" onclick="selectMiniAmount('club2',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-club2" onclick="selectMiniAmount('club2',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('club2', 'Клуб взаємодопомоги 2.0')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-      <!-- День захисту дітей -->
-      <div class="p-card" data-status="done">
-        <div class="p-card-top">
-          <span class="p-status done">Завершено</span>
-          <h3>День захисту дітей / «День навпаки»</h3>
-          <p class="p-desc">Святковий захід для дітей соло-батьків на День захисту дітей - формат «День навпаки» де діти і мами міняються ролями, сміються і відпочивають разом.</p>
-          <div class="p-tags">
-            <span class="p-tag orange">Діти</span>
-            <span class="p-tag pink">Свято</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          
-    <div class="liqpay-mini" id="mini-childday"><button class="lp-mini-amount lp-mini-childday" onclick="selectMiniAmount('childday',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-childday selected" onclick="selectMiniAmount('childday',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-childday" onclick="selectMiniAmount('childday',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('childday', 'День захисту дітей')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-      <!-- Різдвяний чобіток 2025 -->
-      <div class="p-card" data-status="done">
-        <div class="p-card-top">
-          <span class="p-status done">Завершено</span>
-          <h3>Свято в хабі «Різдвяний чобіток» 2025</h3>
-          <p class="p-desc">Різдвяне свято у київському хабі - затишна атмосфера, подарунки та новорічна радість для дітей та мам нашої спільноти.</p>
-          <div class="p-tags">
-            <span class="p-tag orange">Діти</span>
-            <span class="p-tag pink">Свято</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          
-    <div class="liqpay-mini" id="mini-rizdvo"><button class="lp-mini-amount lp-mini-rizdvo" onclick="selectMiniAmount('rizdvo',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-rizdvo selected" onclick="selectMiniAmount('rizdvo',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-rizdvo" onclick="selectMiniAmount('rizdvo',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('rizdvo', 'Різдвяний чобіток 2025')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-    </div><!-- /cards-grid done -->
-  </div><!-- /section-group done -->
-
-
-  <!-- ═══ ПОСТІЙНОДІЮЧІ ═══ -->
   <div class="section-group" data-group="ongoing">
     <div class="group-header">
       <span class="group-label ongoing">Постійнодіючі</span>
@@ -457,96 +259,7 @@ footer { background:#12101A; padding:40px 6%; display:flex; align-items:center; 
         </div>
       </div>
 
-      <!-- Супердзвінок -->
-      <div class="p-card" data-status="ongoing">
-        <div class="p-card-top">
-          <span class="p-status ongoing">Постійнодіючий</span>
-          <h3>Супердзвінок</h3>
-          <p class="p-desc">Програма підтримки дітей соло-батьків через дистанційне спілкування з важливими людьми - батьком, дідусем, або наставником. Адресна допомога у збереженні родинних зв'язків.</p>
-          <div class="p-tags">
-            <span class="p-tag orange">Діти</span>
-            <span class="p-tag">Підтримка</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          <a href="https://ukrainiansisters.com/ukr/2025/03/24/%d0%bf%d1%80%d0%be%d1%94%d0%ba%d1%82-%d1%81%d1%83%d0%bf%d0%b5%d1%80%d0%b4%d0%b7%d0%b2%d1%96%d0%bd%d0%be%d0%ba" target="_blank" class="btn-sm primary">
-            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            На сайт
-          </a>
-          <a href="https://drive.google.com/file/d/1sKHhJGldxkULH0MGELqADwn6eB7fPGHT/view?usp=drive_link" target="_blank" class="btn-sm outline">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            One pager
-          </a>
-          
-    <div class="liqpay-mini" id="mini-supercall"><button class="lp-mini-amount lp-mini-supercall" onclick="selectMiniAmount('supercall',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-supercall selected" onclick="selectMiniAmount('supercall',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-supercall" onclick="selectMiniAmount('supercall',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('supercall', 'Супердзвінок')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-      <!-- Кризове реагування -->
-      <div class="p-card" data-status="ongoing">
-        <div class="p-card-top">
-          <span class="p-status ongoing">Постійнодіючий</span>
-          <h3>Кризове реагування (кейс-менеджмент)</h3>
-          <p class="p-desc">Системний супровід соло-мам у кризових ситуаціях: оцінка потреб, підбір відповідних послуг, перенаправлення до партнерів та довгостроковий моніторинг ситуації.</p>
-          <div class="p-tags">
-            <span class="p-tag">Кризове реагування</span>
-            <span class="p-tag">Навігація</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          
-    <div class="liqpay-mini" id="mini-crisis"><button class="lp-mini-amount lp-mini-crisis" onclick="selectMiniAmount('crisis',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-crisis selected" onclick="selectMiniAmount('crisis',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-crisis" onclick="selectMiniAmount('crisis',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('crisis', 'Кризове реагування')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-      <!-- ДЖПТ -->
-      <div class="p-card" data-status="ongoing">
-        <div class="p-card-top">
-          <span class="p-status ongoing">Постійнодіючий</span>
-          <h3>ДЖПТ - Дні жіночої підтримки та турботи</h3>
-          <p class="p-desc">Регулярні заходи для соло-мам, де центр уваги - турбота про себе: психологічна підтримка, практики самодопомоги, спілкування та взаємопідтримка спільноти.</p>
-          <div class="p-tags">
-            <span class="p-tag pink">Психічне здоров'я</span>
-            <span class="p-tag">Спільнота</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          <a href="https://ukrainiansisters.com/ukr/2025/04/28/%d0%b4%d0%b6%d0%bf%d1%82-%d0%b4%d0%bd%d1%96-%d0%b6%d1%96%d0%bd%d0%be%d1%87%d0%be%d1%97-%d0%bf%d1%96%d0%b4%d1%82%d1%80%d0%b8%d0%bc%d0%ba%d0%b8-%d1%82%d0%b0-%d1%82%d1%83%d1%80%d0%b1%d0%be%d1%82%d0%b8/" target="_blank" class="btn-sm primary">
-            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            На сайт
-          </a>
-          
-    <div class="liqpay-mini" id="mini-jpt"><button class="lp-mini-amount lp-mini-jpt" onclick="selectMiniAmount('jpt',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-jpt selected" onclick="selectMiniAmount('jpt',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-jpt" onclick="selectMiniAmount('jpt',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('jpt', 'ДЖПТ')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-      <!-- Клуб взаємодопомоги для мам та дітей (постійний) -->
-      <div class="p-card" data-status="ongoing">
-        <div class="p-card-top">
-          <span class="p-status ongoing">Постійнодіючий</span>
-          <h3>Клуб взаємодопомоги для мам та дітей</h3>
-          <p class="p-desc">Регулярний клуб для соло-мам і їхніх дітей - простір де мами можуть поговорити, поділитися досвідом і отримати підтримку, поки діти грають та розвиваються.</p>
-          <div class="p-tags">
-            <span class="p-tag">Спільнота</span>
-            <span class="p-tag orange">Діти</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          <a href="https://ukrainiansisters.com/ukr/2025/04/28/%d0%b4%d0%b6%d0%bf%d1%82-%d0%b4%d0%bd%d1%96-%d0%b6%d1%96%d0%bd%d0%be%d1%87%d0%be%d1%97-%d0%bf%d1%96%d0%b4%d1%82%d1%80%d0%b8%d0%bc%d0%ba%d0%b8-%d1%82%d0%b0-%d1%82%d1%83%d1%80%d0%b1%d0%be%d1%82%d0%b8/" target="_blank" class="btn-sm primary">
-            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            На сайт
-          </a>
-          
-    <div class="liqpay-mini" id="mini-club_ong"><button class="lp-mini-amount lp-mini-club_ong" onclick="selectMiniAmount('club_ong',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-club_ong selected" onclick="selectMiniAmount('club_ong',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-club_ong" onclick="selectMiniAmount('club_ong',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('club_ong', 'Клуб взаємодопомоги для мам та дітей (постійний)')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-    </div><!-- /cards-grid ongoing -->
-  </div><!-- /section-group ongoing -->
-
-
-  <!-- ═══ ПОТОЧНІ ═══ -->
-  <div class="section-group" data-group="active">
+<div class="section-group" data-group="active">
     <div class="group-header">
       <span class="group-label active">Поточні</span>
       <div class="group-title">Активні прямо зараз</div>
@@ -571,46 +284,7 @@ footer { background:#12101A; padding:40px 6%; display:flex; align-items:center; 
         </div>
       </div>
 
-      <!-- Зимова підтримка -->
-      <div class="p-card" data-status="active">
-        <div class="p-card-top">
-          <span class="p-status active">Поточний</span>
-          <h3>Зимова підтримка 2025–2026</h3>
-          <p class="p-desc">Гуманітарна та психологічна підтримка соло-мам у зимовий період - теплі набори, продукти харчування, засоби гігієни та підтримка спільноти в холодні місяці.</p>
-          <div class="p-tags">
-            <span class="p-tag">Гуманітарна допомога</span>
-            <span class="p-tag">Зима 2025</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          
-    <div class="liqpay-mini" id="mini-winter"><button class="lp-mini-amount lp-mini-winter" onclick="selectMiniAmount('winter',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-winter selected" onclick="selectMiniAmount('winter',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-winter" onclick="selectMiniAmount('winter',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('winter', 'Зимова підтримка 2025-2026')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-      <!-- Мапування -->
-      <div class="p-card" data-status="active">
-        <div class="p-card-top">
-          <span class="p-status active">Поточний</span>
-          <h3>Мапування</h3>
-          <p class="p-desc">Дослідження та картування потреб, ресурсів і соло-сімей по регіонах України. Формування бази даних для ефективнішого планування програм та адресної підтримки.</p>
-          <div class="p-tags">
-            <span class="p-tag">Дослідження</span>
-            <span class="p-tag pink">Аналітика</span>
-          </div>
-        </div>
-        <div class="p-card-foot">
-          
-    <div class="liqpay-mini" id="mini-mapping"><button class="lp-mini-amount lp-mini-mapping" onclick="selectMiniAmount('mapping',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-mapping selected" onclick="selectMiniAmount('mapping',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-mapping" onclick="selectMiniAmount('mapping',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('mapping', 'Мапування')">&#10084; Підтримати</button></div>
-        </div>
-      </div>
-
-    </div><!-- /cards-grid active -->
-  </div><!-- /section-group active -->
-
-
-  <!-- ═══ ЗАПЛАНОВАНІ ═══ -->
-  <div class="section-group" data-group="planned">
+<div class="section-group" data-group="planned">
     <div class="group-header">
       <span class="group-label planned">Заплановані</span>
       <div class="group-title">Що готуємо для вас</div>
@@ -632,6 +306,35 @@ footer { background:#12101A; padding:40px 6%; display:flex; align-items:center; 
         <div class="p-card-foot">
           
     <div class="liqpay-mini" id="mini-stories12"><button class="lp-mini-amount lp-mini-stories12" onclick="selectMiniAmount('stories12',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-stories12 selected" onclick="selectMiniAmount('stories12',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-stories12" onclick="selectMiniAmount('stories12',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('stories12', '12 Історій сили')">&#10084; Підтримати</button></div>
+        </div>
+      </div>
+
+<div class="section-group" data-group="done">
+    <div class="group-header">
+      <span class="group-label done">Завершені</span>
+      <div class="group-title">Проєкти, що вже змінили життя</div>
+      <div class="group-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <!-- Амазонки -->
+      <div class="p-card" data-status="done">
+        <div class="p-card-top">
+          <span class="p-status done">Завершено</span>
+          <h3>Амазонки</h3>
+          <p class="p-desc">Проєкт підтримки та підсилення жінок, які демонструють силу і стійкість попри всі виклики воєнного часу. Надихаючі зустрічі, майстер-класи та підтримка спільноти.</p>
+          <div class="p-tags">
+            <span class="p-tag pink">Психічне здоров'я</span>
+            <span class="p-tag">Спільнота</span>
+          </div>
+        </div>
+        <div class="p-card-foot">
+          <a href="https://ukrainiansisters.com/ukr/2024/05/26/amazons" target="_blank" class="btn-sm primary">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            На сайт
+          </a>
+          
+    <div class="liqpay-mini" id="mini-amazons"><button class="lp-mini-amount lp-mini-amazons" onclick="selectMiniAmount('amazons',100,this)">100 грн</button><button class="lp-mini-amount lp-mini-amazons selected" onclick="selectMiniAmount('amazons',200,this)">200 грн</button><button class="lp-mini-amount lp-mini-amazons" onclick="selectMiniAmount('amazons',500,this)">500 грн</button><button class="btn-liqpay-mini" onclick="donateMiniBtn('amazons', 'Амазонки')">&#10084; Підтримати</button></div>
         </div>
       </div>
 
