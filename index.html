@@ -1128,6 +1128,53 @@ footer { background:#12101A; padding:56px 6% 32px; display:block; }
   flex-shrink: 0;
 }
 
+
+/* Beneficiary cards */
+.bene-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 24px 0;
+}
+
+.bene-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--charcoal);
+  transition: border-color 0.18s, transform 0.18s;
+}
+
+.bene-card:hover {
+  border-color: var(--pink);
+  transform: translateY(-2px);
+}
+
+.bene-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.bene-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--pink);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: opacity 0.18s;
+}
+
+.bene-more-link:hover { opacity: 0.75; }
+
 </style>
 </head>
 <body>
@@ -1298,41 +1345,38 @@ footer { background:#12101A; padding:56px 6% 32px; display:block; }
   <div class="bene-grid">
     <div>
       <p>Для нас «соло-мами» - це жінки, які де-юре або де-факто самостійно виховують і забезпечують своїх дітей - особливо ті, хто перебуває в тимчасовій кризі або складних життєвих обставинах.</p>
-      <div class="bene-list">
-        <div class="bene-item"><span class="bene-dot"></span>Незаміжні</div>
-        <div class="bene-item"><span class="bene-dot"></span>Розлучені</div>
-        <div class="bene-item"><span class="bene-dot"></span>Вдови</div>
-        <div class="bene-item"><span class="bene-dot"></span>Дружини / партнерки військових та ветеранів з дітьми</div>
-        <div class="bene-item"><span class="bene-dot"></span>Мами дітей загиблого батька під час війни</div>
-        <div class="bene-item"><span class="bene-dot"></span>Мами з дітьми з інвалідністю</div>
-        <div class="bene-item"><span class="bene-dot"></span>Вагітні без достатньої підтримки</div>
-        <div class="bene-item"><span class="bene-dot"></span>Соло-опікунки</div>
-        <div class="bene-item"><span class="bene-dot"></span>ВПО</div>
-        <div class="bene-item"><span class="bene-dot"></span>Мами-біженки за кордоном</div>
+
+      <div class="bene-cards">
+        <div class="bene-card">
+          <span class="bene-icon">💍</span>
+          <span>Незаміжні та розлучені</span>
+        </div>
+        <div class="bene-card">
+          <span class="bene-icon">🕊️</span>
+          <span>Вдови та мами загиблих на війні</span>
+        </div>
+        <div class="bene-card">
+          <span class="bene-icon">🪖</span>
+          <span>Дружини та партнерки військових</span>
+        </div>
+        <div class="bene-card">
+          <span class="bene-icon">🤰</span>
+          <span>Вагітні без підтримки</span>
+        </div>
+        <div class="bene-card">
+          <span class="bene-icon">🧡</span>
+          <span>Мами дітей з інвалідністю</span>
+        </div>
+        <div class="bene-card">
+          <span class="bene-icon">🏠</span>
+          <span>ВПО та мами-біженки</span>
+        </div>
       </div>
-        <div class="bene-item"><span class="bene-dot"></span>Розлучені</div>
-        <div class="bene-item"><span class="bene-dot"></span>Вдови</div>
-        <div class="bene-item"><span class="bene-dot"></span>Дружини військових</div>
-        <div class="bene-item"><span class="bene-dot"></span>Мами загиблих на війні</div>
-        <div class="bene-item"><span class="bene-dot"></span>ВПО</div>
-        <div class="bene-item"><span class="bene-dot"></span>Мами дітей з інвалідністю</div>
-        <div class="bene-item"><span class="bene-dot"></span>Мами-біженки</div>
-        <div class="bene-item"><span class="bene-dot"></span>Вагітні без підтримки</div>
-        <div class="bene-item"><span class="bene-dot"></span>Соло-опікунки</div>
-      </div>
+
+      <a href="https://drive.google.com/file/d/1tOxZ_5jtxDICGVsTjjaR9t1hGHbTi5XW/view" target="_blank" class="bene-more-link">
+        Повний перелік категорій — у нашому стратегічному плані →
+      </a>
     </div>
-    <div class="bene-card">
-      <h3>Масштаб кризи</h3>
-      <p>Рівень бідності серед соло-сімей зріс з 39% у 2021 до <strong style="color:var(--pink);">67,9% у 2022</strong> і утримується вище 65% у 2023-му.</p>
-      <div class="mini-stats">
-        <div class="mini-stat"><strong>6,7M</strong><span>Жінок потребують гуман. допомоги (UN Women, 2025)</span></div>
-        <div class="mini-stat"><strong>2M+</strong><span>Жінок з дітьми мають статус ВПО</span></div>
-        <div class="mini-stat"><strong>34К</strong><span>Розлучень у 2024 (+42% до 2023)</span></div>
-        <div class="mini-stat"><strong>15M</strong><span>Можуть потребувати психол. підтримки (МОЗ)</span></div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══ GOALS ═══ -->
 <section class="goals-section" id="goals">
