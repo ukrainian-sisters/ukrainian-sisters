@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Прозорість - Українські сестри</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:         #24396F;
+  --blue-light:   #EDF0F7;
+  --blue-mid:     #3D5A9E;
+  --pink:         #C94774;
+  --pink-light:   #FBEAF0;
+  --pink-dark:    #9B2F52;
+  --orange:       #D78320;
+  --orange-light: #FDF3E3;
+  --orange-dark:  #A6640F;
+  --green:        #2E7D5E;
+  --green-light:  #E8F5EF;
+  --purple:       #6B3FA0;
+  --purple-light: #F0EAF8;
+  --cream:        #FDF8F6;
+  --bg:           #FBF0F4;
+  --charcoal:     #1C1822;
+  --muted:        #72606A;
+  --border:       rgba(201,71,116,0.12);
+  --border-blue:  rgba(36,57,111,0.1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--charcoal);font-size:16px;line-height:1.7;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(251,240,244,0.96);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:0 4%;display:flex;align-items:center;justify-content:space-between;height:68px;gap:12px;}
+.nav-logo img{height:36px;display:block;}
+.nav-links{display:flex;gap:4px;list-style:none;align-items:center;}
+.nav-links a{font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;letter-spacing:0.03em;padding:6px 10px;border-radius:6px;white-space:nowrap;transition:background 0.18s,color 0.18s;opacity:0.75;}
+.nav-links a:hover,.nav-links a.active{opacity:1;background:var(--pink-light);color:var(--pink-dark);}
+.nav-divider{width:1px;height:18px;background:var(--border);margin:0 4px;flex-shrink:0;}
+.nav-lang{display:flex;gap:2px;flex-shrink:0;}
+.lang-btn{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:5px 9px;border-radius:5px;border:none;cursor:pointer;font-family:'Nunito',sans-serif;transition:all 0.18s;background:transparent;color:var(--muted);}
+.lang-btn.active{background:var(--blue);color:white;}
+.lang-btn:hover:not(.active){background:var(--blue-light);color:var(--blue);}
+.nav-socials{display:flex;gap:8px;align-items:center;flex-shrink:0;}
+.nav-social-icon{width:28px;height:28px;border-radius:50%;background:var(--pink-light);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background 0.18s,transform 0.18s;}
+.nav-social-icon:hover{background:var(--pink);transform:translateY(-1px);}
+.nav-social-icon svg{width:13px;height:13px;fill:var(--pink);transition:fill 0.18s;}
+.nav-social-icon:hover svg{fill:white;}
+.btn-donate{background:var(--pink);color:white;padding:9px 20px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background 0.18s,transform 0.15s;}
+.btn-donate:hover{background:var(--pink-dark);transform:translateY(-1px);}
+
+/* PAGE HERO */
+.page-hero{background:var(--bg);padding:112px 6% 60px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(201,71,116,0.06) 0%,transparent 70%);pointer-events:none;}
+.breadcrumb{font-size:12px;color:var(--muted);margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+.breadcrumb a{color:var(--pink);text-decoration:none;font-weight:600;}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5vw,64px);font-weight:500;line-height:1.1;color:var(--charcoal);max-width:680px;margin-bottom:18px;}
+.page-hero h1 em{font-style:italic;color:var(--pink);}
+.page-hero p{font-size:15px;color:var(--muted);max-width:520px;line-height:1.85;font-weight:300;}
+
+/* NAV ANCHORS */
+.anchor-nav{
+  background:var(--cream);
+  border-bottom:1px solid var(--border);
+  padding:0 6%;
+  position:sticky;top:68px;z-index:100;
+  display:flex;gap:0;overflow-x:auto;
+}
+.anchor-link{
+  padding:16px 20px;
+  font-size:12.5px;font-weight:700;
+  color:var(--muted);text-decoration:none;
+  white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:color 0.18s,border-color 0.18s;
+  letter-spacing:0.02em;
+}
+.anchor-link:hover{color:var(--pink);border-bottom-color:var(--pink);}
+.anchor-link.active{color:var(--blue);border-bottom-color:var(--blue);}
+
+/* SECTIONS */
+section{padding:72px 6%;}
+.section-alt{background:var(--cream);}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--pink);margin-bottom:14px;}
+.badge::before{content:'';display:inline-block;width:18px;height:2px;background:var(--pink);border-radius:2px;}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.4vw,46px);font-weight:500;line-height:1.12;margin-bottom:18px;}
+.section-lead{font-size:15px;color:var(--muted);max-width:560px;line-height:1.85;font-weight:300;margin-bottom:44px;}
+
+/* REPORTS */
+.reports-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:44px;
+}
+
+.report-card{
+  background:white;
+  border:1.5px solid var(--border);
+  border-radius:20px;
+  overflow:hidden;
+  transition:transform 0.2s,box-shadow 0.2s;
+  display:flex;flex-direction:column;
+}
+.report-card:hover{transform:translateY(-3px);box-shadow:0 12px 44px rgba(36,57,111,0.08);}
+
+.report-card-head{
+  padding:28px 32px 24px;
+  display:flex;align-items:flex-start;gap:18px;
+}
+.report-icon-box{
+  width:56px;height:56px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.report-icon-box svg{width:24px;height:24px;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+
+.report-card-head h3{font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:6px;line-height:1.3;}
+.report-card-head p{font-size:13px;color:var(--muted);line-height:1.65;}
+
+.report-card-foot{
+  padding:18px 32px 24px;
+  border-top:1px solid var(--border);
+  margin-top:auto;
+  display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+  background:var(--cream);
+}
+
+.btn-report{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:9px 20px;border-radius:100px;
+  font-size:12px;font-weight:700;letter-spacing:0.04em;
+  text-decoration:none;transition:all 0.18s;
+  white-space:nowrap;
+}
+.btn-report.primary{background:var(--pink);color:white;}
+.btn-report.primary:hover{background:var(--pink-dark);transform:translateY(-1px);}
+.btn-report.outline{background:transparent;border:1.5px solid var(--border-blue);color:var(--blue);}
+.btn-report.outline:hover{background:var(--blue-light);}
+.btn-report svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* POLICIES */
+.policies-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:44px;
+}
+.policy-card{
+  background:white;
+  border:1.5px solid var(--border);
+  border-radius:16px;
+  padding:28px 24px;
+  display:flex;flex-direction:column;gap:12px;
+  transition:transform 0.2s,border-color 0.2s;
+}
+.policy-card:hover{transform:translateY(-3px);border-color:var(--pink);}
+.policy-icon{
+  width:44px;height:44px;border-radius:12px;
+  background:var(--pink-light);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.policy-icon svg{width:20px;height:20px;stroke:var(--pink);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+.policy-card h4{font-size:15px;font-weight:700;color:var(--charcoal);}
+.policy-card p{font-size:13px;color:var(--muted);line-height:1.65;flex:1;}
+.btn-policy{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 16px;border-radius:100px;
+  font-size:11.5px;font-weight:700;letter-spacing:0.04em;
+  text-decoration:none;
+  background:var(--blue-light);color:var(--blue);
+  transition:all 0.18s;align-self:flex-start;
+}
+.btn-policy:hover{background:var(--blue);color:white;}
+.btn-policy svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;}
+.policy-soon{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 12px;border-radius:100px;
+  font-size:11px;font-weight:700;letter-spacing:0.06em;
+  background:var(--orange-light);color:var(--orange-dark);
+  align-self:flex-start;
+}
+
+/* AWARDS */
+.awards-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:44px;
+}
+.award-card{
+  background:white;
+  border:1.5px solid var(--border);
+  border-radius:20px;
+  overflow:hidden;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.award-card:hover{transform:translateY(-3px);box-shadow:0 12px 44px rgba(36,57,111,0.08);}
+.award-head{
+  padding:28px 28px 20px;
+  display:flex;align-items:flex-start;gap:18px;
+}
+.award-medal{
+  width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;flex-shrink:0;
+}
+.award-head h3{font-size:17px;font-weight:700;color:var(--charcoal);margin-bottom:5px;line-height:1.3;}
+.award-head .award-date{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;}
+.award-head p{font-size:13px;color:var(--muted);line-height:1.65;}
+.award-links{
+  padding:16px 28px 22px;
+  border-top:1px solid var(--border);
+  background:var(--cream);
+  display:flex;gap:8px;flex-wrap:wrap;
+}
+.btn-award{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 16px;border-radius:100px;
+  font-size:11.5px;font-weight:700;text-decoration:none;
+  transition:all 0.18s;white-space:nowrap;
+}
+.btn-award.ig{background:linear-gradient(135deg,#F77737,#E1306C);color:white;}
+.btn-award.ig:hover{opacity:0.88;}
+.btn-award.fb{background:#1877F2;color:white;}
+.btn-award.fb:hover{background:#1565D8;}
+.btn-award.yt{background:#FF0000;color:white;}
+.btn-award.yt:hover{background:#CC0000;}
+.btn-award.outline{background:transparent;border:1.5px solid var(--border-blue);color:var(--blue);}
+.btn-award.outline:hover{background:var(--blue-light);}
+.btn-award svg{width:12px;height:12px;flex-shrink:0;}
+
+/* PARTNERS LOGOS */
+.partners-logo-grid{
+  display:flex;flex-wrap:wrap;gap:16px;
+  margin-top:44px;
+}
+.partner-logo-card{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  background:white;
+  border:1.5px solid var(--border);
+  border-radius:16px;
+  padding:20px 20px 16px;
+  width:120px;
+  text-decoration:none;
+  transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;
+}
+.partner-logo-card:hover{
+  transform:translateY(-3px);
+  border-color:var(--pink);
+  box-shadow:0 8px 28px rgba(201,71,116,0.1);
+}
+.partner-logo-circle{
+  width:52px;height:52px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:16px;font-weight:600;color:white;
+  letter-spacing:0.02em;
+}
+.partner-logo-card span{
+  font-size:11px;font-weight:700;
+  color:var(--muted);text-align:center;line-height:1.3;
+}
+
+/* TESTIMONIALS */
+.testimonials-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+  margin-top:44px;
+}
+.testimonial-card{
+  background:white;
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  padding:28px 28px 24px;
+  position:relative;
+}
+.testimonial-card::before{
+  content:'"';
+  font-family:'Cormorant Garamond',serif;
+  font-size:80px;font-weight:600;
+  color:var(--pink-light);
+  position:absolute;top:-8px;left:20px;
+  line-height:1;pointer-events:none;
+}
+.testimonial-card p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-style:italic;
+  color:var(--charcoal);line-height:1.65;
+  margin-bottom:16px;padding-top:24px;
+}
+.testimonial-author{
+  display:flex;align-items:center;gap:10px;
+}
+.testimonial-avatar{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:600;color:white;flex-shrink:0;
+}
+.testimonial-author span{font-size:13px;font-weight:700;color:var(--charcoal);}
+.testimonial-author small{display:block;font-size:11px;color:var(--muted);}
+
+.testimonials-cta{
+  margin-top:28px;
+  background:var(--blue);
+  border-radius:16px;
+  padding:28px 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+}
+.testimonials-cta p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-style:italic;color:rgba(255,255,255,0.9);
+  max-width:460px;
+}
+.btn-testimonials{
+  display:inline-flex;align-items:center;gap:8px;
+  background:white;color:var(--blue);
+  padding:12px 24px;border-radius:100px;
+  text-decoration:none;font-size:13px;font-weight:700;
+  white-space:nowrap;flex-shrink:0;
+  transition:background 0.18s;
+}
+.btn-testimonials:hover{background:var(--orange-light);}
+
+/* MEDIA / PHOTOS */
+.media-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:44px;
+}
+.media-tile{
+  aspect-ratio:4/3;
+  background:linear-gradient(135deg,var(--pink-light),var(--blue-light));
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+  cursor:pointer;
+  transition:transform 0.2s;
+  border:1.5px solid var(--border);
+}
+.media-tile:hover{transform:scale(1.02);}
+.media-tile-inner{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;
+  padding:20px;text-align:center;
+}
+.media-tile-inner svg{width:32px;height:32px;}
+.media-tile-inner span{font-size:12px;font-weight:700;color:var(--muted);}
+.media-tile.big{
+  grid-column:span 2;
+  grid-row:span 1;
+}
+.media-drive-cta{
+  margin-top:24px;
+  background:white;border:1.5px solid var(--border);
+  border-radius:16px;padding:24px 28px;
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+}
+.media-drive-cta p{font-size:14px;color:var(--muted);line-height:1.7;flex:1;}
+.media-drive-cta p strong{color:var(--charcoal);}
+.btn-drive{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--blue);color:white;
+  padding:12px 24px;border-radius:100px;
+  text-decoration:none;font-size:13px;font-weight:700;
+  white-space:nowrap;flex-shrink:0;
+  transition:background 0.18s;
+}
+.btn-drive:hover{background:var(--blue-mid);}
+.btn-drive svg{width:15px;height:15px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;}
+
+/* FOOTER */
+footer{background:#12101A;padding:34px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.footer-logo img{height:28px;filter:brightness(0) invert(1) opacity(0.6);}
+.footer-info{font-size:12px;color:rgba(255,255,255,0.26);text-align:center;line-height:1.85;}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap;}
+.footer-links a{font-size:12px;font-weight:600;color:rgba(255,255,255,0.32);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:#D78320;}
+
+@media(max-width:900px){
+  .reports-grid,.awards-grid,.testimonials-grid{grid-template-columns:1fr;}
+  .policies-grid{grid-template-columns:1fr 1fr;}
+  .media-grid{grid-template-columns:1fr 1fr;}
+  .media-tile.big{grid-column:span 1;}
+  .nav-links,.nav-socials{display:none;}
+}
+@media(max-width:600px){
+  .policies-grid{grid-template-columns:1fr;}
+  .media-grid{grid-template-columns:1fr;}
+  .media-tile.big{grid-column:span 1;}
+  footer{flex-direction:column;text-align:center;}
+  .footer-links{justify-content:center;}
+  .partners-logo-grid{justify-content:center;}
+}
+
+/* GALLERY */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 240px;
+  gap: 12px;
+  margin-top: 40px;
+  margin-bottom: 32px;
+}
+
+.gallery-wide {
+  grid-column: span 2;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--blue-light);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.gallery-item:hover img { transform: scale(1.04); }
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(36,57,111,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  color: white;
+}
+
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+
+.gallery-overlay span {
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.gallery-overlay svg {
+  width: 28px; height: 28px;
+  stroke: white; fill: none;
+  stroke-width: 1.8; stroke-linecap: round;
+}
+
+/* VIDEOS */
+.video-section-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding-top: 8px;
+}
+
+.video-section-head svg {
+  width: 18px; height: 18px;
+  stroke: var(--blue); fill: none;
+  stroke-width: 1.6; stroke-linecap: round;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.video-item {
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--charcoal);
+  border: 1.5px solid var(--border);
+}
+
+.gallery-video {
+  width: 100%;
+  display: block;
+  max-height: 240px;
+  object-fit: cover;
+  background: #111;
+}
+
+.video-label {
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  background: white;
+  letter-spacing: 0.04em;
+}
+
+/* LIGHTBOX */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,8,16,0.92);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-overlay.open { display: flex; }
+
+.lightbox-inner {
+  max-width: 90vw;
+  max-height: 90vh;
+  position: relative;
+}
+
+.lightbox-slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.lightbox-slide.active { display: flex; }
+
+.lightbox-slide img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.lightbox-caption {
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.lightbox-close, .lightbox-prev, .lightbox-next {
+  position: fixed;
+  background: rgba(255,255,255,0.12);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s;
+  z-index: 1001;
+}
+
+.lightbox-close { top: 20px; right: 20px; width: 44px; height: 44px; }
+.lightbox-prev  { left: 20px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; }
+.lightbox-next  { right: 20px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; }
+
+.lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
+  background: rgba(255,255,255,0.22);
+}
+
+.lightbox-close svg, .lightbox-prev svg, .lightbox-next svg {
+  width: 20px; height: 20px;
+  stroke: white; fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+
+@media(max-width:760px) {
+  .gallery-grid { grid-template-columns: repeat(2,1fr); grid-auto-rows: 160px; }
+  .gallery-wide { grid-column: span 2; }
+  .video-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:480px) {
+  .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+  .gallery-wide { grid-column: span 1; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="ukrainiansisters_final.html" class="nav-logo"><div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></a>
+  <ul class="nav-links">
+    <li><a href="projects.html">Проєкти</a></li>
+    <li><a href="news.html">Новини</a></li>
+    <li><a href="about.html">Про нас</a></li>
+    <li><a href="help.html">Як допомогти</a></li>
+    <li><a href="transparency.html" class="active">Прозорість</a></li>
+    <li><a href="/international">Міжнародна співпраця</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+    <div class="nav-socials">
+      <a href="https://www.instagram.com/ukrainiansisters" class="nav-social-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
+      <a href="https://t.me/ukrainiansisters" class="nav-social-icon"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg></a>
+      <a href="https://www.facebook.com/share/1BazsYt5Mf/" class="nav-social-icon"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+    </div>
+    <div class="nav-divider"></div>
+    <div class="nav-lang"><button class="lang-btn active">УКР</button><button class="lang-btn">ENG</button></div>
+    <div class="nav-divider"></div>
+    <a href="help.html#donate" class="btn-donate">Донат</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="breadcrumb"><a href="ukrainiansisters_final.html">Головна</a><span>→</span><span>Прозорість</span></div>
+  <h1>Ми відкриті.<br>Це наш <em>принцип</em>.</h1>
+  <p>«Українські сестри» вірять у повну прозорість перед донорами, партнерами та спільнотою. Тут - наші звіти, політики, нагороди, відгуки та фотоматеріали.</p>
+</div>
+
+<!-- ANCHOR NAV -->
+<nav class="anchor-nav">
+  <a href="#reports" class="anchor-link active">📄 Публічні звіти</a>
+  <a href="#policies" class="anchor-link">📋 Політики</a>
+  <a href="#awards" class="anchor-link">🏆 Відзнаки</a>
+  <a href="#partners-logos" class="anchor-link">🤝 Партнери</a>
+  <a href="#testimonials" class="anchor-link">💬 Відгуки</a>
+  <a href="#media" class="anchor-link">📸 Фото / Відео</a>
+</nav>
+
+
+<!-- 6.1 REPORTS -->
+<section id="reports">
+  <div class="badge">Публічні звіти</div>
+  <h2>Звіти та документи</h2>
+  <p class="section-lead">Ми публікуємо річні та щомісячні звіти, щоб ви бачили, як використовуються кошти і яких результатів ми досягаємо.</p>
+
+  <div class="reports-grid">
+
+    <!-- Річні звіти -->
+    <div class="report-card">
+      <div class="report-card-head">
+        <div class="report-icon-box" style="background:var(--pink-light);">
+          <svg viewBox="0 0 24 24" style="stroke:var(--pink);"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div>
+          <h3>Річні звіти</h3>
+          <p>Повний звіт за рік - фінансові показники, кількість бенефіціарок, реалізовані проєкти, партнерства і досягнення організації. У форматі PDF.</p>
+        </div>
+      </div>
+      <div class="report-card-foot">
+        <a href="https://drive.google.com/drive/folders/1I9ogp23GCGZ0gOpkCYBhZaky2I6twain?usp=drive_link" target="_blank" class="btn-report primary">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Відкрити PDF звіти
+        </a>
+      </div>
+    </div>
+
+    <!-- Щомісячні звіти -->
+    <div class="report-card">
+      <div class="report-card-head">
+        <div class="report-icon-box" style="background:var(--blue-light);">
+          <svg viewBox="0 0 24 24" style="stroke:var(--blue);"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div>
+          <h3>Щомісячні звіти</h3>
+          <p>Короткі текстові звіти про діяльність за кожен місяць - кількість видач, заходів, нових бенефіціарів та основних подій організації.</p>
+        </div>
+      </div>
+      <div class="report-card-foot">
+        <a href="https://docs.google.com/document/d/12stzFPGlpX05aR-y_UwH8Kfpp7WheDJ5Mjbc6PnKhS0/edit?usp=drivesdk" target="_blank" class="btn-report primary">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Читати звіти
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 6.2 POLICIES -->
+<section class="section-alt" id="policies">
+  <div class="badge">Документи організації</div>
+  <h2>Політики та принципи</h2>
+  <p class="section-lead">Наші внутрішні документи, що регулюють роботу організації та гарантують дотримання прав бенефіціарів і стандартів прозорості.</p>
+
+  <div class="policies-grid">
+
+    <div class="policy-card">
+      <div class="policy-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h4>Політика конфіденційності</h4>
+      <p>Як ми збираємо, зберігаємо та використовуємо персональні дані бенефіціарів, волонтерів і донорів.</p>
+      <a href="https://docs.google.com/document/d/1sLw_-LDQGHXwtSuFBho7PwMjqrL2o64fwaWCVlQOwdM/edit" target="_blank" class="btn-policy">
+        <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Переглянути
+      </a>
+    </div>
+
+    <div class="policy-card">
+      <div class="policy-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+      <h4>Публічна оферта</h4>
+      <p>Умови прийняття благодійних пожертвувань і надання допомоги бенефіціарам.</p>
+      <a href="https://docs.google.com/document/d/1mw6m_UXZRWzvGMCf4Y0LeVB471yzrejPQK4NPM4-JOw/edit" target="_blank" class="btn-policy">
+        <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Переглянути
+      </a>
+    </div>
+
+    <div class="policy-card">
+      <div class="policy-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <h4>Антикорупційна політика</h4>
+      <p>Наші стандарти прозорості, запобігання конфлікту інтересів і відповідальної роботи з коштами.</p>
+      <span class="policy-soon">⏳ Незабаром</span>
+    </div>
+
+    <div class="policy-card">
+      <div class="policy-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h4>Волонтерська політика</h4>
+      <p>Права та обов'язки волонтерів, умови співпраці та стандарти взаємодії з командою.</p>
+      <span class="policy-soon">⏳ Незабаром</span>
+    </div>
+
+    <div class="policy-card">
+      <div class="policy-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+      <h4>Захист бенефіціарів</h4>
+      <p>Принципи гідного та безпечного надання допомоги, конфіденційності і «Do No Harm».</p>
+      <span class="policy-soon">⏳ Незабаром</span>
+    </div>
+
+    <div class="policy-card">
+      <div class="policy-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+      <h4>Фінансова політика</h4>
+      <p>Порядок управління коштами, процедури звітності та внутрішнього контролю організації.</p>
+      <span class="policy-soon">⏳ Незабаром</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 6.3 AWARDS -->
+<section id="awards">
+  <div class="badge">Відзнаки та нагороди</div>
+  <h2>Нас помічають і цінують</h2>
+  <p class="section-lead">Визнання нашої роботи - це насамперед підтвердження того, що ми рухаємося у правильному напрямку.</p>
+
+  <div class="awards-grid">
+
+    <!-- Нова пошта -->
+    <div class="award-card">
+      <div class="award-head">
+        <div class="award-medal" style="background:var(--orange-light);">🏆</div>
+        <div>
+          <div class="award-date" style="color:var(--orange-dark);">Березень 2025</div>
+          <h3>Відзнака «Варті» від Нової пошти</h3>
+          <p>Щорічна нагорода «Варті» від Нової пошти - визнання волонтерської та благодійної діяльності організації на всеукраїнському рівні.</p>
+        </div>
+      </div>
+      <div class="award-links">
+        <a href="https://www.instagram.com/p/DHtpGZ2ouaR/?img_index=1" target="_blank" class="btn-award ig">
+          <svg viewBox="0 0 24 24" style="stroke:white;fill:none;stroke-width:1.6;"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+          Наш пост
+        </a>
+        <a href="https://www.instagram.com/p/DH5ktFfKg51/?img_index=8" target="_blank" class="btn-award ig">
+          <svg viewBox="0 0 24 24" style="stroke:white;fill:none;stroke-width:1.6;"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+          Пост Нової пошти
+        </a>
+        <a href="https://www.youtube.com/watch?v=SZGQYrdAy3w" target="_blank" class="btn-award yt">
+          <svg viewBox="0 0 24 24" style="fill:white;width:12px;height:12px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          YouTube
+        </a>
+      </div>
+    </div>
+
+    <!-- Київський форум волонтерів -->
+    <div class="award-card">
+      <div class="award-head">
+        <div class="award-medal" style="background:var(--blue-light);">🎖️</div>
+        <div>
+          <div class="award-date" style="color:var(--blue);">2025</div>
+          <h3>Відзнака Київського форуму волонтерів</h3>
+          <p>Визнання внеску «Українських сестер» у розвиток волонтерського руху та підтримку соло-мам на Київському форумі волонтерів.</p>
+        </div>
+      </div>
+      <div class="award-links">
+        <a href="https://www.instagram.com/p/DPwgJAyCJMZ/?igsh=MXdvMmc0aGVlbGV4MQ==" target="_blank" class="btn-award ig">
+          <svg viewBox="0 0 24 24" style="stroke:white;fill:none;stroke-width:1.6;"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+          Наш пост
+        </a>
+        <a href="https://www.facebook.com/photo/?fbid=24829318440095368&set=pcb.24829458316748047&locale=uk_UA" target="_blank" class="btn-award fb">
+          <svg viewBox="0 0 24 24" style="fill:white;width:12px;height:12px;"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          Фото з КФВ
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 6.4 PARTNERS LOGOS -->
+<section class="section-alt" id="partners-logos">
+  <div class="badge">Партнери</div>
+  <h2>Ті, хто поруч із нами</h2>
+  <p class="section-lead">Організації, бізнеси та інституції, які підтримують нашу місію і роблять нашу роботу можливою.</p>
+
+  <div class="partners-logo-grid">
+    
+      <a href="https://my.avon.ua/" target="_blank" rel="noopener" class="partner-logo-card">
+        <div class="partner-logo-circle" style="background:var(--pink);">A</div>
+        <span>Avon</span>
+      </a>
+      <a href="https://novaposhta.ua/" target="_blank" rel="noopener" class="partner-logo-card">
+        <div class="partner-logo-circle" style="background:var(--orange);">НП</div>
+        <span>Нова пошта</span>
+      </a>
+      <a href="https://ukraine.unwomen.org/en" target="_blank" rel="noopener" class="partner-logo-card">
+        <div class="partner-logo-circle" style="background:var(--blue);">UN</div>
+        <span>UN Women</span>
+      </a>
+      <a href="https://www.unicef.org/ukraine/en" target="_blank" rel="noopener" class="partner-logo-card">
+        <div class="partner-logo-circle" style="background:var(--blue-mid);">UC</div>
+        <span>UNICEF</span>
+      </a>
+      <a href="https://ukraine.unfpa.org/en" target="_blank" rel="noopener" class="partner-logo-card">
+        <div class="partner-logo-circle" style="background:var(--purple);">UN</div>
+        <span>UNFPA Ukraine</span>
+      </a>
+      <a href="https://inboost.ai/" target="_blank" rel="noopener" class="partner-logo-card">
+        <div class="partner-logo-circle" style="background:var(--blue);">IN</div>
+        <span>Inboost</span>
+      </a>
+      <a href="https://bimpsoft.com/" target="_blank" rel="noopener" class="partner-logo-card">
+        <div class="partner-logo-circle" style="background:var(--green);">BI</div>
+        <span>Bimp</span>
+      </a>
+      <a href="https://kyivcity.gov.ua/" target="_blank" rel="noopener" class="partner-logo-card">
+        <div class="partner-logo-circle" style="background:var(--blue);">КМ</div>
+        <span>КМДА</span>
+      </a>
+      <a href="https://www.dcz.gov.ua/" target="_blank" rel="noopener" class="partner-logo-card">
+        <div class="partner-logo-circle" style="background:var(--orange-dark);">ЦЗ</div>
+        <span>Центри зайнятості</span>
+      </a>
+      <a href="https://ednannia.ua/" target="_blank" rel="noopener" class="partner-logo-card">
+        <div class="partner-logo-circle" style="background:var(--pink);">Єд</div>
+        <span>Єднання</span>
+      </a>
+      <a href="https://ffu.foundation/en" target="_blank" rel="noopener" class="partner-logo-card">
+        <div class="partner-logo-circle" style="background:var(--blue-mid);">GI</div>
+        <span>GIDNA</span>
+      </a>
+  </div>
+</section>
+
+
+<!-- 6.5 TESTIMONIALS -->
+<section id="testimonials">
+  <div class="badge">Відгуки та Історії</div>
+  <h2>Голоси тих, кому ми<br><span style="color:var(--pink);font-style:italic;font-family:'Cormorant Garamond',serif;">допомогли</span></h2>
+  <p class="section-lead">Реальні слова реальних жінок - найкраще підтвердження того, що наша робота має значення.</p>
+
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card">
+      <p>«Я вперше відчула, що я не сама. Ці дівчата - справжні сестри. Прийшла по допомогу, а знайшла цілу родину.»</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background:var(--pink);">О</div>
+        <div><span>Олена</span><small>Бенефіціарка, ВПО, Київ</small></div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>«Ukrainian Sisters - це не просто організація. Це рух, який змінює те, як суспільство дивиться на соло-материнство.»</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background:var(--blue);">М</div>
+        <div><span>Марина</span><small>Волонтерка, Харків</small></div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>«Дякую за те, що підтримали мене в найскладніший момент. Зараз я сама допомагаю іншим - і це завдяки вам.»</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background:var(--orange);">Т</div>
+        <div><span>Тетяна</span><small>Бенефіціарка, Кривий Ріг</small></div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <p>«Ресурсні зустрічі з Каріною - це ковток свіжого повітря. Нарешті місце, де можна бути собою і отримати справжню підтримку.»</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background:var(--purple);">І</div>
+        <div><span>Ірина</span><small>Учасниця програми, Київ</small></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="testimonials-cta">
+    <p>Хочете прочитати більше реальних історій та відгуків від наших бенефіціарок?</p>
+    <a href="https://docs.google.com/document/d/11Yj9knbVtbpYghpiVPsclPmliyx-zx8CpGtwjXvFBek/edit?usp=drivesdk" target="_blank" class="btn-testimonials">
+      Читати всі відгуки →
+    </a>
+  </div>
+</section>
+
+
+<!-- 6.6 PHOTO / VIDEO -->
+<section class="section-alt" id="media">
+  <div class="badge">Фото та відео</div>
+  <h2>З наших заходів<br><span style="color:var(--pink);font-style:italic;font-family:'Cormorant Garamond',serif;">і видач</span></h2>
+  <p class="section-lead">Документальні фотографії та відео з нашої щоденної роботи - гуманітарних видач, заходів підтримки та спільнотних подій.</p>
+
+  <!-- PHOTOS -->
+  <div class="gallery-grid">
+    
+      <div class="gallery-item gallery-wide" onclick="openLightbox('p1')">
+        <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div class="gallery-overlay">
+          <span>Форум добрих справ</span>
+          <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('p2')">
+        <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div class="gallery-overlay">
+          <span>Творчий майстер-клас</span>
+          <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('p3')">
+        <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div class="gallery-overlay">
+          <span>Захід підтримки соло-мам</span>
+          <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('p4')">
+        <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div class="gallery-overlay">
+          <span>Малюнки дітей для Ukrainian Sisters</span>
+          <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('p5')">
+        <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div class="gallery-overlay">
+          <span>Видача допомоги - Нова пошта</span>
+          <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('p6')">
+        <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div class="gallery-overlay">
+          <span>Зустріч спільноти</span>
+          <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item gallery-wide" onclick="openLightbox('p7')">
+        <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div class="gallery-overlay">
+          <span>Видача наборів бенефіціаркам</span>
+          <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+  </div>
+
+  <!-- VIDEOS -->
+  <div class="video-section-head">
+    <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+    Відеоматеріали
+  </div>
+  <div class="video-grid">
+    
+      <div class="video-item">
+        
+        <div class="video-label">Відео з заходу 1</div>
+      </div>
+      <div class="video-item">
+        
+        <div class="video-label">Відео з заходу 2</div>
+      </div>
+      <div class="video-item">
+        
+        <div class="video-label">Відео з заходу 3</div>
+      </div>
+  </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">
+    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <button class="lightbox-prev" onclick="event.stopPropagation();shiftLightbox(-1)">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="lightbox-next" onclick="event.stopPropagation();shiftLightbox(1)">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
+    
+  <div class="lightbox-slide" id="lb-p1">
+    <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <div class="lightbox-caption">Форум добрих справ</div>
+  </div>
+  <div class="lightbox-slide" id="lb-p2">
+    <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <div class="lightbox-caption">Творчий майстер-клас</div>
+  </div>
+  <div class="lightbox-slide" id="lb-p3">
+    <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <div class="lightbox-caption">Захід підтримки соло-мам</div>
+  </div>
+  <div class="lightbox-slide" id="lb-p4">
+    <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <div class="lightbox-caption">Малюнки дітей для Ukrainian Sisters</div>
+  </div>
+  <div class="lightbox-slide" id="lb-p5">
+    <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <div class="lightbox-caption">Видача допомоги - Нова пошта</div>
+  </div>
+  <div class="lightbox-slide" id="lb-p6">
+    <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <div class="lightbox-caption">Зустріч спільноти</div>
+  </div>
+  <div class="lightbox-slide" id="lb-p7">
+    <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <div class="lightbox-caption">Видача наборів бенефіціаркам</div>
+  </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div>
+  <div class="footer-socials-row" style="display:flex;gap:10px;margin-bottom:12px;">
+    <a href="https://www.instagram.com/ukrainiansisters" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(201,71,116,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+      <svg viewBox="0 0 24 24" width="16" height="16" style="stroke:white;fill:none;stroke-width:1.6;stroke-linecap:round;"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" style="fill:white;"/></svg>
+    </a>
+    <a href="https://t.me/ukrainiansisters" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(44,165,224,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+      <svg viewBox="0 0 24 24" width="16" height="16" style="stroke:white;fill:none;stroke-width:1.6;stroke-linecap:round;"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/share/1BazsYt5Mf/" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(24,119,242,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+      <svg viewBox="0 0 24 24" width="16" height="16" style="fill:white;"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+    </a>
+  </div>
+  <div class="footer-info">ЄДРПОУ 45381881 · Київ, Україна · your@ukrainiansisters.com<br>Рахунок: UA173052990000026003025033847 · АТ КБ «ПРИВАТБАНК»</div>
+  <div class="footer-links">
+    <a href="mailto:your@ukrainiansisters.com">your@ukrainiansisters.com</a>
+    <a href="/help#donate" style="color:var(--pink);">&#9829; Задонатити</a>
+  </div>
+</footer>
+
+<script>
+// Anchor nav highlight on scroll
+const sections = document.querySelectorAll('section[id], div[id]');
+const anchors  = document.querySelectorAll('.anchor-link');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      anchors.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector('.anchor-link[href="#' + entry.target.id + '"]');
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+
+sections.forEach(s => observer.observe(s));
+
+const PHOTO_KEYS = ['p1','p2','p3','p4','p5','p6','p7'];
+let currentIdx = 0;
+
+function openLightbox(key) {
+  currentIdx = PHOTO_KEYS.indexOf(key);
+  showSlide(currentIdx);
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function shiftLightbox(dir) {
+  currentIdx = (currentIdx + dir + PHOTO_KEYS.length) % PHOTO_KEYS.length;
+  showSlide(currentIdx);
+}
+
+function showSlide(idx) {
+  document.querySelectorAll('.lightbox-slide').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById('lb-' + PHOTO_KEYS[idx]);
+  if (el) el.classList.add('active');
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') shiftLightbox(-1);
+  if (e.key === 'ArrowRight') shiftLightbox(1);
+});
+
+</script>
+</body>
+</html
+  </div>
+  <div class="lightbox-slide" id="lb-p2">
+    <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <div class="lightbox-caption">Творчий майстер-клас</div>
+  </div>
+  <div class="lightbox-slide" id="lb-p3">
+    <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <div class="lightbox-caption">Захід підтримки соло-мам</div>
+  </div>
+  <div class="lightbox-slide" id="lb-p4">
+    <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <div class="lightbox-caption">Малюнки дітей для Ukrainian Sisters</div>
+  </div>
+  <div class="lightbox-slide" id="lb-p5">
+    <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <div class="lightbox-caption">Видача допомоги - Нова пошта</div>
+  </div>
+  <div class="lightbox-slide" id="lb-p6">
+    <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <div class="lightbox-caption">Зустріч спільноти</div>
+  </div>
+  <div class="lightbox-slide" id="lb-p7">
+    <div style="width:100%;height:100%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="32" height="32" style="stroke:var(--blue);fill:none;stroke-width:1.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <div class="lightbox-caption">Видача наборів бенефіціаркам</div>
+  </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+
+
+
+<script>
+// Anchor nav highlight on scroll
+const sections = document.querySelectorAll('section[id], div[id]');
+const anchors  = document.querySelectorAll('.anchor-link');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      anchors.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector('.anchor-link[href="#' + entry.target.id + '"]');
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+
+sections.forEach(s => observer.observe(s));
+
+const PHOTO_KEYS = ['p1','p2','p3','p4','p5','p6','p7'];
+let currentIdx = 0;
+
+function openLightbox(key) {
+  currentIdx = PHOTO_KEYS.indexOf(key);
+  showSlide(currentIdx);
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function shiftLightbox(dir) {
+  currentIdx = (currentIdx + dir + PHOTO_KEYS.length) % PHOTO_KEYS.length;
+  showSlide(currentIdx);
+}
+
+function showSlide(idx) {
+  document.querySelectorAll('.lightbox-slide').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById('lb-' + PHOTO_KEYS[idx]);
+  if (el) el.classList.add('active');
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') shiftLightbox(-1);
+  if (e.key === 'ArrowRight') shiftLightbox(1);
+});
+
+</script>
+</body>
+</html>
