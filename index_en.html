@@ -1550,5 +1550,34 @@ function switchTab(btn, id) {
   btn.classList.add('active');
 }
 </script>
+
+<div id="search-overlay" onclick="if(event.target===this)this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(28,24,34,0.7);backdrop-filter:blur(6px);z-index:500;align-items:flex-start;justify-content:center;padding-top:100px;">
+  <div style="background:white;border-radius:20px;padding:24px;width:90%;max-width:560px;position:relative;" onclick="event.stopPropagation()">
+    <button onclick="document.getElementById('search-overlay').style.display='none'" style="position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:var(--bg);border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">✕</button>
+    <div style="display:flex;align-items:center;gap:12px;border:1.5px solid var(--border-blue);border-radius:100px;padding:10px 20px;">
+      <svg viewBox="0 0 24 24" width="16" height="16" style="stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="search-input" type="text" placeholder="Search the site..." oninput="doSearch(this.value)" style="border:none;outline:none;font-size:15px;width:100%;font-family:'Nunito',sans-serif;color:var(--charcoal);" autofocus/>
+    </div>
+    <div id="search-results" style="margin-top:16px;max-height:300px;overflow-y:auto;"></div>
+  </div>
+</div>
+<script>
+const SEARCH_INDEX = [
+  {title:'Home',url:'/en',text:'solo mothers support help'},
+  {title:'About us',url:'/en/about',text:'team mission vision Olesya Halyna'},
+  {title:'Projects',url:'/projects',text:'projects amazons supercall'},
+  {title:'News',url:'/news',text:'news media press Instagram Facebook'},
+  {title:'How to help',url:'/help',text:'donate volunteer partner ambassador'},
+  {title:'Transparency',url:'/en/transparency',text:'reports awards partners testimonials photos'},
+];
+function doSearch(q){
+  const res=document.getElementById('search-results');
+  if(!q.trim()){res.innerHTML='';return;}
+  const m=SEARCH_INDEX.filter(p=>p.title.toLowerCase().includes(q.toLowerCase())||p.text.toLowerCase().includes(q.toLowerCase()));
+  if(!m.length){res.innerHTML='<p style="color:var(--muted);font-size:14px;padding:8px 0;">Nothing found</p>';return;}
+  res.innerHTML=m.map(p=>`<a href="${p.url}" style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;text-decoration:none;color:var(--charcoal);" onmouseover="this.style.background='var(--pink-light)'" onmouseout="this.style.background='transparent'"><svg viewBox="0 0 24 24" width="14" height="14" style="stroke:var(--pink);fill:none;stroke-width:2;flex-shrink:0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span style="font-size:14px;font-weight:600;">${p.title}</span></a>`).join('');
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('search-overlay').style.display='none';});
+</script>
 </body>
 </html>
