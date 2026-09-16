@@ -24,5 +24,7 @@
     { "src": "/refund", "dest": "/refund.html" },
     { "src": "/refund/en", "dest": "/refund-en.html" },
     { "src": "/en/refund", "dest": "/refund-en.html" }
+    { "src": "/found-hers", "dest": "/found-hers.html" },
+{ "src": "/en/found-hers", "dest": "/found-hers-en.html" }
   ]
 }
