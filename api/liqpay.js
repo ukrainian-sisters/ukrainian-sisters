@@ -16,7 +16,7 @@ module.exports = function handler(req, res) {
     description: b.description || 'Донат - Українські сестри',
     order_id: b.order_id || ('us_' + Date.now()),
     language: 'uk',
-    result_url: process.env.RESULT_URL || 'https://ukrainian-sisters.vercel.app/',
+    result_url: process.env.RESULT_URL || 'https://ukrainiansisters.com/',
   };
   const data = Buffer.from(JSON.stringify(params)).toString('base64');
   const sig = crypto.createHash('sha1').update(PRIV+data+PRIV).digest('base64');
