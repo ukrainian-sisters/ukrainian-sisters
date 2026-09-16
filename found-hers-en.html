@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foundhers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #F8F4EC;
+    --ink-soft: #B9C6DC;
+    --paper: #142A4D;
+    --paper-raised: #1C3A63;
+    --pink: #E8196B;
+    --gold: #D7A94E;
+    --line: rgba(248,244,236,0.16);
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --ink: #F8F4EC;
+      --ink-soft: #B9C6DC;
+      --paper: #0E1F3A;
+      --paper-raised: #16305A;
+      --pink: #FF4E93;
+      --gold: #E0B564;
+      --line: rgba(248,244,236,0.16);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #F8F4EC;
+    --ink-soft: #B9C6DC;
+    --paper: #0E1F3A;
+    --paper-raised: #16305A;
+    --pink: #FF4E93;
+    --gold: #E0B564;
+    --line: rgba(248,244,236,0.16);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  header.top {
+    padding: 32px 0 8px;
+  }
+  .wordmark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+  }
+  .wordmark span { color: var(--pink); }
+
+  .hero {
+    padding: 64px 0 40px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+    line-height: 1.08;
+    margin: 0 0 22px;
+    max-width: 15ch;
+    letter-spacing: -0.01em;
+  }
+  .hero .lede {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 46ch;
+    margin: 0 0 30px;
+  }
+  .hero .split {
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+    color: var(--ink);
+  }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 13px 24px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border: 1px solid transparent;
+    transition: opacity .15s ease;
+  }
+  .btn:hover { opacity: 0.85; }
+  .btn.primary { background: var(--pink); color: #fff; }
+  .btn.ghost { border-color: var(--ink); color: var(--ink); }
+
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  h2.section-head {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.7rem;
+    margin: 0 0 26px;
+    max-width: 20ch;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .two-col p { color: var(--ink-soft); margin: 0 0 14px; }
+
+  .origin-quote {
+    border-left: 2px solid var(--gold);
+    padding-left: 20px;
+    margin: 0;
+  }
+  .origin-quote p { font-size: 1.02rem; }
+  .origin-quote .cite { font-size: 0.85rem; color: var(--ink-soft); margin-top: 8px; }
+
+  /* timeline */
+  .timeline { position: relative; margin-top: 8px; }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 21px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--line);
+  }
+  .phase {
+    position: relative;
+    padding: 0 0 40px 64px;
+  }
+  .phase:last-child { padding-bottom: 4px; }
+  .phase .num {
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background: var(--paper-raised);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+  }
+  .phase h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    margin: 6px 0 8px;
+  }
+  .phase p { color: var(--ink-soft); margin: 0 0 6px; max-width: 55ch; }
+  .phase .echo {
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-style: italic;
+    margin-top: 8px;
+  }
+
+  .three-up {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .track {
+    padding: 26px 24px;
+    border-right: 1px solid var(--line);
+  }
+  .track:last-child { border-right: none; }
+  .track h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.05rem;
+    margin: 0 0 10px;
+  }
+  .track p { color: var(--ink-soft); font-size: 0.93rem; margin: 0 0 16px; }
+  .track a {
+    color: var(--pink);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.92rem;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+  }
+
+  .note {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  footer {
+    padding: 36px 0 48px;
+  }
+  footer p { font-size: 0.85rem; color: var(--ink-soft); max-width: 60ch; }
+
+  @media (max-width: 640px) {
+    .two-col { grid-template-columns: 1fr; }
+    .three-up { grid-template-columns: 1fr; }
+    .track { border-right: none; border-bottom: 1px solid var(--line); }
+    .track:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="wordmark">Found<span>hers</span></div>
+      <p class="note" style="margin-top:4px;">A programme of Ukrainian Sisters International</p>
+    </header>
+
+    <section class="hero">
+      <h1>Not startups.<br><span class="split">Livelihoods.</span></h1>
+      <p class="lede">Foundhers was conceived to connect capital - grants, investors, businesses, individuals, whatever form it takes - to women building businesses that will feed their families, not chase a venture-scale exit. A funding model designed for the woman who needs this to work, not just to raise.</p>
+      <div class="cta-row">
+        <a class="btn ghost" href="#apply">Get involved</a>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-head">Why this exists</h2>
+      <div class="two-col">
+        <div>
+          <p>Most funding pipelines for women are built around pitch decks and growth curves. That works for a small slice of founders - and leaves out the far larger group of women who don't want to build the next unicorn. They want a shop, a service, a small manufacturing line: something that pays the bills, reliably, starting this year.</p>
+          <p>Foundhers was designed for that second group: women who have - or are ready to build - an income-generating business, matched with capital that isn't fussed about a venture-scale return - grant, investor, business, or individual money, whichever actually gets the business running.</p>
+        </div>
+        <blockquote class="origin-quote">
+          <p>The thinking traces back to a 2023 project submitted to UN Women's Women's Peace &amp; Humanitarian Fund: an incubator taking women from idea, through training, to actually running and sustaining a business - not just completing a course.</p>
+          <p class="cite">Foundhers was drafted to carry that same shape forward for founders in the UK.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-head">Proof the underlying model works</h2>
+      <p class="note" style="margin-bottom:28px;">Foundhers is being built on a methodology that has already produced real, ongoing businesses - delivered through Ukrainian Sisters and its volunteers, funded by grants rather than by private investors so far.</p>
+      <div class="three-up">
+        <div class="track">
+          <h4>Taste of Victory</h4>
+          <p>A social enterprise led by Halyna Lozova, Ukrainian Sisters' Executive Director, built with CO volunteers and funded by a grant she won for it. Now an ongoing, operating business.</p>
+          <a href="https://www.instagram.com/taste_of__victory" target="_blank" rel="noopener">Instagram &#8594;</a>
+        </div>
+        <div class="track">
+          <h4>The Brand</h4>
+          <p>Ukrainian Sisters' own glove social enterprise, with proceeds split between the business and the charitable mission. Live and trading.</p>
+          <a href="https://www.ukrainiansisters.com/en/the-brand" target="_blank" rel="noopener">Visit &#8594;</a>
+        </div>
+        <div class="track">
+          <h4>Female Auto Service</h4>
+          <p>The next enterprise in development, in Ukraine - following the same path from idea to a running business.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-head">How the model was designed to work</h2>
+      <div class="timeline">
+        <div class="phase">
+          <div class="num">1</div>
+          <h3>Intake &amp; assessment</h3>
+          <p>A founder's existing business - or business idea - is assessed against what it actually needs to become fundable: skills gaps, financial footing, and readiness.</p>
+        </div>
+        <div class="phase">
+          <div class="num">2</div>
+          <h3>Grounding &amp; restoration</h3>
+          <p>Before any business work starts, psychological support helps each woman find solid footing again - the personal resourcing that has to come before someone can build anything on top of it.</p>
+          <p class="echo">Carried directly from the 2023 model, where this came before any planning or training began.</p>
+        </div>
+        <div class="phase">
+          <div class="num">3</div>
+          <h3>Foundations</h3>
+          <p>Structured mentoring sharpens the business model and turns a rough idea into a clear roadmap the founder can present with confidence.</p>
+        </div>
+        <div class="phase">
+          <div class="num">4</div>
+          <h3>Investment readiness</h3>
+          <p>Practical modules - financial literacy, legal structure, marketing, day-to-day management - build the proposal up to something an investor can actually evaluate.</p>
+        </div>
+        <div class="phase">
+          <div class="num">5</div>
+          <h3>Capital matching</h3>
+          <p>Curated introductions to the right source of capital for that business - grant, investor, business partner, or individual backer - with structured pitch sessions and transparent terms. No cold outreach, no guessing at fit.</p>
+        </div>
+        <div class="phase">
+          <div class="num">6</div>
+          <h3>Funded &amp; sustained</h3>
+          <p>Mentorship continues after the cheque clears. Funded founders are invited back as mentors - and, over time, as investors - for the next cohort.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-head">Get involved</h2>
+      <p class="note" style="margin-bottom:24px;">Apply, become a partner, or provide funding.</p>
+      <div class="three-up">
+        <div class="track" id="invest">
+          <h4>Funders</h4>
+          <p>Back women running real businesses - as a grant-maker, investor, or business partner - with a clear view of where the money goes and who it reaches.</p>
+          <a href="mailto:hello@foundhers.uk">Provide funding &#8594;</a>
+        </div>
+        <div class="track" id="apply">
+          <h4>Founders</h4>
+          <p>Bring a business - running or ready to start - that needs the right funding and the right people behind it.</p>
+          <a href="mailto:hello@foundhers.uk">Apply &#8594;</a>
+        </div>
+        <div class="track">
+          <h4>Partners</h4>
+          <p>Organisations working with women founders in the UK who might want to co-deliver a future cohort.</p>
+          <a href="mailto:hello@foundhers.uk">Become a partner &#8594;</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Foundhers exists as a programme of Ukrainian Sisters International, directed at connecting capital - grant, investor, or private - with women building a business that can sustain a family, not a startup chasing a venture-scale exit.</p>
+    </footer>
+  </div>
+</body>
+</html>
