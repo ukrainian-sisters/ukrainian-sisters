@@ -101,7 +101,7 @@ function buyerEmail(d) {
     <p>We'll be in touch about delivery shortly.
        50% of every sale supports the mission of Ukrainian Sisters.</p>
     <p style="margin-top:24px">Ukrainian Sisters: The Brand<br>
-       <a href="https://www.instagram.com/ukrainiansisters/">@ukrainiansisters</a></p>
+       <a href="https://www.instagram.com/ukrainiansisters_thebrand/">@ukrainiansisters_thebrand</a></p>
   </div>`;
 }
 
