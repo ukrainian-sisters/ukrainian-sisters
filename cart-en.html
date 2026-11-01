@@ -191,6 +191,29 @@ nav{
   margin-top:8px;
 }
 
+/* SELECT */
+.form-group select{
+  width:100%;
+  padding:11px 14px;
+  border:1px solid var(--line);
+  background:var(--paper);
+  font-family:'Jost',sans-serif;
+  font-size:14px;
+  color:var(--ink);
+  outline:none;
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23221E1A' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  cursor:pointer;
+}
+.form-group select:focus{border-color:var(--ink);}
+.delivery-note{
+  font-size:11px;
+  opacity:.55;
+  margin-top:6px;
+  line-height:1.4;
+}
 /* FORM */
 .form-title{
   font-family:'Rye',serif;
@@ -317,6 +340,32 @@ footer{
       <div class="form-title">Your details</div>
       <form id="order-form" onsubmit="submitOrder(event)">
         <div class="form-group">
+          <label>Country</label>
+          <select id="f-country" required onchange="onCountryChange()">
+            <option value="">— Select country —</option>
+            <option value="Ukraine">Ukraine</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="Germany">Germany</option>
+            <option value="France">France</option>
+            <option value="Poland">Poland</option>
+            <option value="USA">USA</option>
+            <option value="Other">Other country</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Glove size</label>
+          <select id="f-size" required>
+            <option value="">— Select size —</option>
+            <option value="XXS">XXS — 16 cm</option>
+            <option value="XS">XS — 18 cm</option>
+            <option value="S">S — 19 cm</option>
+            <option value="M">M — 20 cm</option>
+            <option value="L">L — 22 cm</option>
+            <option value="XL">XL — 23 cm</option>
+          </select>
+          <p class="delivery-note">Measure the circumference of your palm (excluding thumb) in centimetres.</p>
+        </div>
+        <div class="form-group">
           <label>Full name</label>
           <input type="text" id="f-name" required placeholder="Anna Kovalenko">
         </div>
@@ -328,9 +377,17 @@ footer{
           <label>Phone</label>
           <input type="tel" id="f-phone" placeholder="+380 00 000 0000">
         </div>
-        <div class="form-group">
-          <label>Delivery address (country, city, street)</label>
-          <input type="text" id="f-address" required placeholder="Ukraine, Kyiv, Khreshchatyk 1">
+        <!-- Ukraine delivery -->
+        <div class="form-group" id="delivery-ua" style="display:none;">
+          <label>Nova Poshta / Ukrposhta — branch or address</label>
+          <input type="text" id="f-address-ua" placeholder="e.g. Nova Poshta, Kyiv, branch №5">
+          <p class="delivery-note">You can enter a branch number or a home delivery address.</p>
+        </div>
+        <!-- International delivery -->
+        <div class="form-group" id="delivery-intl" style="display:none;">
+          <label>Delivery address</label>
+          <input type="text" id="f-address-intl" placeholder="Street, city, postcode">
+          <p class="delivery-note">International orders are shipped by tracked postal service.</p>
         </div>
         <div class="form-group">
           <label>Order comment (optional)</label>
@@ -444,11 +501,17 @@ function submitOrder(e) {
   const cart = getCart();
   if (!cart.length) return;
 
+  const country = document.getElementById('f-country').value;
+  const address = country === 'Ukraine'
+    ? document.getElementById('f-address-ua').value
+    : document.getElementById('f-address-intl').value;
   const orderData = {
     name: document.getElementById('f-name').value,
     email: document.getElementById('f-email').value,
     phone: document.getElementById('f-phone').value,
-    address: document.getElementById('f-address').value,
+    country,
+    size: document.getElementById('f-size').value,
+    address,
     comment: document.getElementById('f-comment').value,
     items: cart,
     lang: 'en',
@@ -510,6 +573,30 @@ function submitOrder(e) {
     btn.textContent = 'Pay via WayForPay';
     alert('Error. Please try again or contact us.');
   });
+}
+
+function onCountryChange() {
+  const country = document.getElementById('f-country').value;
+  const ua = document.getElementById('delivery-ua');
+  const intl = document.getElementById('delivery-intl');
+  const addrUa = document.getElementById('f-address-ua');
+  const addrIntl = document.getElementById('f-address-intl');
+  if (country === 'Ukraine') {
+    ua.style.display = 'block';
+    intl.style.display = 'none';
+    addrUa.required = true;
+    addrIntl.required = false;
+  } else if (country) {
+    ua.style.display = 'none';
+    intl.style.display = 'block';
+    addrUa.required = false;
+    addrIntl.required = true;
+  } else {
+    ua.style.display = 'none';
+    intl.style.display = 'none';
+    addrUa.required = false;
+    addrIntl.required = false;
+  }
 }
 
 // Init
