@@ -27,6 +27,10 @@ const CATALOGUE = {
   '006': { ua: 'КОХАНА — ДОТИК ТІЛЕСНА', en: 'LOVED TOUCH NUDE',         uah: 3550, eur: 79 },
   '007': { ua: 'КОХАНА — ДОТИК НІЧ',     en: 'LOVED TOUCH DARK',         uah: 3550, eur: 79 },
   '008': { ua: 'КОХАНА — ДОВГА НІЧ',     en: 'LOVED LONG DARK',          uah: 4550, eur: 99 },
+  // Sponsorship packages
+  'SP02': { ua: 'Спонсор виробництва',   en: 'Production Sponsor',       uah: 22000, eur: 500  },
+  'SP03': { ua: 'Партнер бренду',        en: 'Brand Partner',            uah: 88000, eur: 2000 },
+  'SP04': { ua: 'Засновник-спонсор',     en: 'Founding Sponsor',         uah: 220000, eur: 5000 },
 };
 
 const EUR_TO_UAH = 44; // only used if WFP_EN_CURRENCY is set to UAH
