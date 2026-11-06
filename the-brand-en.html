@@ -116,9 +116,51 @@
     transition:transform .25s ease;
   }
   .navlinks a:hover::after{ transform:scaleX(1); }
-  .menu-btn{ display:none; }
+  /* ---------- lang toggle ---------- */
+  .lang-toggle{
+    display:flex; gap:0; border:1px solid var(--line); overflow:hidden;
+    font-family:'Jost',sans-serif; font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+  }
+  .lang-toggle a{
+    padding:5px 10px; text-decoration:none; color:var(--ink); background:transparent;
+    transition:background .18s ease, color .18s ease;
+  }
+  .lang-toggle a.active{ background:var(--ink); color:var(--paper); }
+  .lang-toggle a:hover:not(.active){ background:rgba(26,22,18,.08); }
+
+  /* ---------- mobile menu ---------- */
+  .menu-btn{
+    display:none; background:none; border:1px solid var(--line);
+    padding:7px 10px; cursor:pointer; flex-direction:column; gap:5px; align-items:center; justify-content:center;
+  }
+  .menu-btn span{ display:block; width:20px; height:1.5px; background:var(--ink); transition:transform .22s ease, opacity .22s ease; }
+  .menu-btn.open span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
+  .menu-btn.open span:nth-child(2){ opacity:0; }
+  .menu-btn.open span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
+
+  .mobile-menu{
+    display:none; position:fixed; top:78px; left:0; right:0; z-index:499;
+    background:rgba(237,227,206,.97); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line); padding:24px 18px 32px;
+    flex-direction:column; gap:0;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{
+    padding:14px 0; border-bottom:1px solid var(--line);
+    text-decoration:none; font-size:15px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--ink);
+  }
+  .mobile-menu .lang-row{
+    display:flex; gap:12px; align-items:center; padding-top:20px;
+    font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.6;
+  }
+  .mobile-menu .lang-row a{ padding:0; border:none; font-size:12px; opacity:1; }
+  .mobile-menu .lang-row a.active{ font-weight:700; opacity:1; }
+
   @media(max-width:820px){
     .navlinks{ display:none; }
+    .menu-btn{ display:flex; }
+    .lang-toggle{ display:none; }
   }
 
   /* ---------- hero ---------- */
@@ -322,8 +364,82 @@
   .care-item p{ font-size:13.5px; line-height:1.65; color:#cfc6ac; }
   @media(max-width:760px){ .care-grid{ grid-template-columns:1fr; } }
 
+  /* ---------- sponsorship cards ---------- */
+  .sponsor-section{ padding:80px 0; background:var(--paper-2); }
+  .sponsor-section .section-label{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--red); margin-bottom:12px; display:block; }
+  .sponsor-section h2{ font-size:clamp(28px,4vw,46px); line-height:1.05; margin-bottom:10px; }
+  .sponsor-section .sub{ font-family:'Fraunces',serif; font-style:italic; font-size:16px; color:#4a463f; margin-bottom:50px; max-width:560px; line-height:1.6; }
+  .sponsor-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  @media(max-width:900px){ .sponsor-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:520px){ .sponsor-grid{ grid-template-columns:1fr; } }
+  .sponsor-card{ border:1px solid var(--line); padding:30px 24px 28px; display:flex; flex-direction:column; gap:0; background:var(--paper); position:relative; transition:border-color .2s ease, box-shadow .2s ease; }
+  .sponsor-card:hover{ border-color:var(--ink); box-shadow:4px 4px 0 var(--ink); }
+  .sponsor-card.featured{ background:var(--ink); color:var(--paper-2); border-color:var(--ink); }
+  .sponsor-card.featured .sponsor-price{ color:var(--red); }
+  .sponsor-card.featured .sponsor-desc{ color:rgba(237,227,206,.65); }
+  .sponsor-card.featured .sponsor-perks li{ color:rgba(237,227,206,.8); }
+  .sponsor-card.featured .sponsor-perks li::before{ color:var(--red); }
+  .sponsor-card.featured .sponsor-btn{ background:var(--red); color:white; border-color:var(--red); }
+  .sponsor-card.featured .sponsor-btn:hover{ background:#c0392b; border-color:#c0392b; }
+  .sponsor-tag{ font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red); margin-bottom:16px; display:block; }
+  .sponsor-card.featured .sponsor-tag{ color:rgba(237,227,206,.5); }
+  .sponsor-name{ font-family:'Unbounded',sans-serif; font-weight:700; font-size:15px; letter-spacing:-.01em; margin-bottom:10px; }
+  .sponsor-price{ font-family:'Rye',serif; font-size:30px; color:var(--red); margin-bottom:16px; line-height:1; }
+  .sponsor-desc{ font-size:13px; line-height:1.6; color:#4a463f; margin-bottom:20px; flex:1; }
+  .sponsor-card.featured .sponsor-desc{ color:rgba(237,227,206,.65); }
+  .sponsor-perks{ list-style:none; padding:0; margin:0 0 24px; display:flex; flex-direction:column; gap:8px; }
+  .sponsor-perks li{ font-size:12.5px; padding-left:18px; position:relative; line-height:1.4; }
+  .sponsor-perks li::before{ content:"✦"; position:absolute; left:0; color:var(--red); font-size:9px; top:2px; }
+  .sponsor-btn{ display:inline-block; text-align:center; text-decoration:none; font-family:'Jost',sans-serif; font-size:12px; letter-spacing:.08em; text-transform:uppercase; padding:13px 20px; border:1.5px solid var(--ink); color:var(--ink); transition:background .18s ease, color .18s ease; cursor:pointer; background:transparent; }
+  .sponsor-btn:hover{ background:var(--ink); color:var(--paper-2); }
+
+  /* ---------- donate widget ---------- */
+  .donate-section{
+    background:var(--ink); color:var(--paper-2);
+    padding:60px 0;
+  }
+  .donate-inner{ max-width:680px; }
+  .donate-inner .eyebrow{ color:var(--red); font-size:11px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:14px; display:block; }
+  .donate-inner h2{ font-size:clamp(28px,4vw,46px); line-height:1.05; margin-bottom:14px; }
+  .donate-inner p{ font-family:'Fraunces',serif; font-style:italic; font-size:16px; color:rgba(237,227,206,.65); margin-bottom:32px; line-height:1.6; }
+  .donate-amounts{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:22px; }
+  .donate-amt{
+    background:transparent; border:1px solid rgba(237,227,206,.35);
+    color:var(--paper-2); padding:12px 22px;
+    font-family:'Jost',sans-serif; font-size:14px; letter-spacing:.06em; text-transform:uppercase;
+    cursor:pointer; transition:background .18s ease, border-color .18s ease;
+  }
+  .donate-amt:hover, .donate-amt.selected{ background:var(--red); border-color:var(--red); }
+  .donate-custom-row{ display:flex; gap:0; }
+  .donate-custom-row input{
+    flex:1; background:transparent; border:1px solid rgba(237,227,206,.35);
+    border-right:none; color:var(--paper-2); padding:12px 16px;
+    font-family:'Jost',sans-serif; font-size:14px; outline:none;
+  }
+  .donate-custom-row input::placeholder{ color:rgba(237,227,206,.35); }
+  .donate-custom-row input:focus{ border-color:var(--red); }
+  .donate-btn{
+    background:var(--red); color:white; border:none; padding:12px 28px;
+    font-family:'Jost',sans-serif; font-size:13px; letter-spacing:.08em; text-transform:uppercase;
+    cursor:pointer; transition:background .18s ease;
+  }
+  .donate-btn:hover{ background:#c0392b; }
+  .donate-impact{ margin-top:28px; display:flex; flex-wrap:wrap; gap:24px; }
+  .donate-impact-item{ display:flex; flex-direction:column; gap:4px; }
+  .donate-impact-item .amt{ font-family:'Rye',serif; font-size:22px; color:var(--red); }
+  .donate-impact-item .desc{ font-size:12px; letter-spacing:.04em; text-transform:uppercase; color:rgba(237,227,206,.5); max-width:120px; line-height:1.4; }
+
   /* ---------- footer ---------- */
   footer{ padding:70px 0 40px; }
+  /* social icons */
+  .social-links{ display:flex; gap:12px; margin-top:14px; }
+  .social-links a{
+    display:flex; align-items:center; justify-content:center;
+    width:36px; height:36px; border:1px solid var(--line);
+    color:var(--ink); text-decoration:none; font-size:16px;
+    transition:background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .social-links a:hover{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
   .foot-top{
     display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:40px;
     padding-bottom:50px; border-bottom:1px solid var(--line);
@@ -411,9 +527,32 @@
       <a href="#care">Care</a>
       <a href="#contact">Contact</a>
     </div>
-    <a class="cart-icon-btn" href="/cart/en" id="nav-cart-btn">🛒 <span class="label">Cart</span><span class="cart-count" id="cart-count"></span></a>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="lang-toggle">
+        <a href="/the-brand">UA</a>
+        <a href="/the-brand-en" class="active">EN</a>
+      </div>
+      <a href="https://www.instagram.com/ukrainiansisters_thebrand" target="_blank" rel="noopener" aria-label="Instagram" style="display:flex;align-items:center;color:var(--ink);opacity:.7;transition:opacity .18s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity='.7'"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a class="cart-icon-btn" href="/cart/en" id="nav-cart-btn">🛒 <span class="label">Cart</span><span class="cart-count" id="cart-count"></span></a>
+      <button class="menu-btn" id="menu-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 </header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#catalog">Catalogue</a>
+  <a href="#symbols">Symbols</a>
+  <a href="#story">About</a>
+  <a href="#care">Care</a>
+  <a href="#contact">Contact</a>
+  <div class="lang-row">
+    <span>Language:</span>
+    <a href="/the-brand">UA</a>
+    <a href="/the-brand-en" class="active">EN</a>
+  </div>
+</div>
 
 <section class="hero" id="top">
   <div class="hero-copy">
@@ -508,7 +647,7 @@
       <div class="reveal">
         <span class="eyebrow" style="display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:14px;">Про бренд</span>
         <h2 class="display">Ukrainian Sisters: The Brand — more than gloves.</h2>
-        <p>A word about our woman.<br><br><a href="https://www.instagram.com/ukrainiansisters" target="_blank" style="color:var(--red);font-weight:600;text-decoration:none;">@ukrainiansisters</a> supports solo mothers in Ukraine — those who raise children alone, who hold the home, who choose dignity every day. Over 130 000 women in our database. Crisis support, mental health, employment, rights advocacy — this is our work.<br><br><a href="https://www.instagram.com/forma.thebrand" target="_blank" style="color:var(--red);font-weight:600;text-decoration:none;">Manufactured in Kryvyi Rih, Ukraine.<br><br><div style="border-left:2px solid var(--red);padding-left:16px;margin:20px 0;"><strong>Collection artist</strong><br>Tetyana Perehenska — tattoo culturologist, researcher of Ukrainian ornament.<br><a href="https://www.instagram.com/tanya_tattooartist" target="_blank" style="color:var(--red);text-decoration:none;">@tanya_tattooartist</a></div><br><br>Together we make gloves worn by a woman — rooted. Free. Not alone.<br><br>Every glove is a symbol and a donation. Not just an accessory — a WORD about OUR WOMAN.</p>
+        <p>A word about our woman.<br><br><a href="https://www.instagram.com/ukrainiansisters" target="_blank" style="color:var(--red);font-weight:600;text-decoration:none;">@ukrainiansisters</a> supports solo mothers in Ukraine — those who raise children alone, who hold the home, who choose dignity every day. Over 130 000 women in our database. Crisis support, mental health, employment, rights advocacy — this is our work.<br><br><a href="https://www.instagram.com/forma.thebrand" target="_blank" style="color:var(--red);font-weight:600;text-decoration:none;">Manufactured in Kryvyi Rih, Ukraine.<br><br><div style="border-left:2px solid var(--red);padding-left:16px;margin:20px 0;"><strong>Collection artist</strong><br>Tian Ruro — tattoo master, researcher of Ukrainian ornament.<br><a href="https://www.instagram.com/tian_ruro" target="_blank" style="color:var(--red);text-decoration:none;">@tian_ruro</a></div><br><br>Together we make gloves worn by a woman — rooted. Free. Not alone.<br><br>Every glove is a symbol and a donation. Not just an accessory — a WORD about OUR WOMAN.</p>
         <p class="quote">"You are not alone — the main message of the collection."</p>
         <p>Every design has texture you feel to the touch. Designs repeat across models intentionally — one sketch lives in several materials: nude mesh, black faux leather, cream faux leather.<br>Choose not a pattern — choose the code that resonates.</p>
       </div>
@@ -545,6 +684,100 @@
   </div>
 </section>
 
+<section class="sponsor-section">
+  <div class="wrap">
+    <span class="section-label">Support the initiative</span>
+    <h2 class="display">Become a partner</h2>
+    <p class="sub">Every glove is a symbol and a donation. Support the production recovery and the Ukrainian Sisters mission.</p>
+    <div class="sponsor-grid">
+
+      <div class="sponsor-card">
+        <span class="sponsor-tag">Level 01</span>
+        <div class="sponsor-name">Pre-order</div>
+        <div class="sponsor-price">€79–99</div>
+        <p class="sponsor-desc">Order a pair of gloves now — receive after production. Direct support for artisans in Kryvyi Rih.</p>
+        <ul class="sponsor-perks">
+          <li>One pair of gloves with unique embroidery</li>
+          <li>Delivery to UK / EU</li>
+          <li>50% of profit to Ukrainian Sisters charity</li>
+        </ul>
+        <a href="#catalog" class="sponsor-btn">Choose a model →</a>
+      </div>
+
+      <div class="sponsor-card">
+        <span class="sponsor-tag">Level 02</span>
+        <div class="sponsor-name">Production sponsor</div>
+        <div class="sponsor-price">€500+</div>
+        <p class="sponsor-desc">Support a specific production step — a new batch, equipment restoration, or the London event.</p>
+        <ul class="sponsor-perks">
+          <li>Name / logo on website and social media</li>
+          <li>Impact report on use of funds</li>
+          <li>A pair of gloves as a gift</li>
+          <li>Terms agreed individually</li>
+        </ul>
+        <button class="sponsor-btn" onclick="paySponsor('SP02')">Pay online →</button>
+      </div>
+
+      <div class="sponsor-card featured">
+        <span class="sponsor-tag">Level 03 · Recommended</span>
+        <div class="sponsor-name">Brand partner</div>
+        <div class="sponsor-price">€2,000+</div>
+        <p class="sponsor-desc">Full partnership — your brand alongside Ukrainian Sisters at the London event and in media.</p>
+        <ul class="sponsor-perks">
+          <li>Logo on all event materials</li>
+          <li>Press and Instagram mention</li>
+          <li>Exclusive behind-the-scenes content</li>
+          <li>Meeting with the founder</li>
+          <li>3 pairs of gloves</li>
+        </ul>
+        <button class="sponsor-btn" onclick="paySponsor('SP03')">Pay online →</button>
+      </div>
+
+      <div class="sponsor-card">
+        <span class="sponsor-tag">Level 04</span>
+        <div class="sponsor-name">Founding sponsor</div>
+        <div class="sponsor-price">€5,000+</div>
+        <p class="sponsor-desc">Full production recovery. Your contribution launches 100 new pairs and secures the brand's future.</p>
+        <ul class="sponsor-perks">
+          <li>Permanent "Founding Sponsor" status</li>
+          <li>Exclusive pair with your name on the tag</li>
+          <li>Input into strategic brand decisions</li>
+          <li>Detailed impact report</li>
+          <li>5 pairs of gloves</li>
+        </ul>
+        <button class="sponsor-btn" onclick="paySponsor('SP04')">Pay online →</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="donate-section">
+  <div class="wrap">
+    <div class="donate-inner">
+      <span class="eyebrow">Support the organisation</span>
+      <h2 class="display">Every pound helps a real family.</h2>
+      <p>Your donation goes directly to Ukrainian Sisters — solo mothers who need support right now.</p>
+      <div class="donate-amounts">
+        <button class="donate-amt" data-amt="10">€10</button>
+        <button class="donate-amt" data-amt="25">€25</button>
+        <button class="donate-amt selected" data-amt="50">€50</button>
+        <button class="donate-amt" data-amt="100">€100</button>
+      </div>
+      <div class="donate-custom-row">
+        <input type="number" id="donate-input" placeholder="Custom amount, €" min="1" />
+        <button class="donate-btn" id="donate-submit">Donate →</button>
+      </div>
+      <div class="donate-impact">
+        <div class="donate-impact-item"><span class="amt">€10</span><span class="desc">One psychology session</span></div>
+        <div class="donate-impact-item"><span class="amt">€25</span><span class="desc">Legal help for a mother</span></div>
+        <div class="donate-impact-item"><span class="amt">€50</span><span class="desc">Child essentials for a month</span></div>
+        <div class="donate-impact-item"><span class="amt">€100</span><span class="desc">Retraining course</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer id="contact">
   <div class="wrap">
     <div class="foot-top">
@@ -562,6 +795,15 @@
         <div class="foot-col">
           <h4>Contact</h4>
           <a href="mailto:your@ukrainiansisters.com">your@ukrainiansisters.com</a>
+          <div class="social-links">
+            <a href="https://www.instagram.com/ukrainiansisters_thebrand" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4.5"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -742,7 +984,79 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Mobile menu toggle
+const menuBtn = document.getElementById('menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+if(menuBtn && mobileMenu){
+  menuBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    menuBtn.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuBtn.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
+// Donate widget
+const amtBtns = document.querySelectorAll('.donate-amt');
+const donateInput = document.getElementById('donate-input');
+const donateSubmit = document.getElementById('donate-submit');
+let selectedAmt = 50;
+amtBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    amtBtns.forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedAmt = parseInt(btn.dataset.amt);
+    if(donateInput) donateInput.value = '';
+  });
+});
+if(donateInput){
+  donateInput.addEventListener('input', () => {
+    if(donateInput.value){ amtBtns.forEach(b => b.classList.remove('selected')); selectedAmt = 0; }
+  });
+}
+if(donateSubmit){
+  donateSubmit.addEventListener('click', () => {
+    const amt = donateInput && donateInput.value ? parseInt(donateInput.value) : selectedAmt;
+    if(!amt || amt < 1){ donateInput && (donateInput.style.borderColor='var(--red)'); return; }
+    window.open('https://ukrainiansisters.com/help#donate', '_blank');
+  });
+}
+
+// WayForPay sponsorship payment
+async function paySponsor(productId) {
+  const btn = event && event.currentTarget;
+  if(btn){ btn.disabled = true; btn.textContent = 'Loading…'; }
+  try {
+    const res = await fetch('/api/wayforpay', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: [{ num: productId, qty: 1 }], lang: 'en' })
+    });
+    if(!res.ok) throw new Error('Payment init failed: ' + res.status);
+    const { formData } = await res.json();
+    if(!formData) throw new Error('No formData returned');
+    const wfp = new Wayforpay();
+    wfp.run(formData,
+      () => { location.href = '/the-brand-en?order=success'; },
+      () => { if(btn){ btn.disabled=false; btn.textContent='Pay online →'; } },
+      () => { if(btn){ btn.disabled=false; btn.textContent='Pay online →'; } }
+    );
+  } catch(err) {
+    console.error(err);
+    alert('Payment initialisation failed. Please try again or contact us.');
+    if(btn){ btn.disabled=false; btn.textContent='Pay online →'; }
+  }
+}
 </script>
+
+<script src="https://secure.wayforpay.com/server/pay-widget.js"></script>
 
 </body>
 </html>
