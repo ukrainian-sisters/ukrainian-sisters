@@ -28,8 +28,8 @@
     { "src": "^/the-brand/en/?$", "dest": "/the-brand-en.html" },
     { "src": "^/en/found-hers/?$", "dest": "/found-hers-en.html" },
     { "src": "^/found-hers/en/?$", "dest": "/found-hers-en.html" },
-    { "src": "^/en/the-brand/mayfair-luxury-fasion-14-11-2026", "destination": "/mayfair-luxury-fashion-14-11-2026.html" },
-    { "src": "^/en/the-brand/mayfair-luxury-fashion-14-11-2026", "destination": "/mayfair-luxury-fashion-14-11-2026.html" }
+        { "src": "^/en/the-brand/mayfair-luxury-fasion-14-11-2026/?$", "dest": "/mayfair-luxury-fashion-14-11-2026.html" },
+    { "src": "^/en/the-brand/mayfair-luxury-fashion-14-11-2026/?$", "dest": "/mayfair-luxury-fashion-14-11-2026.html" },
     { "src": "^/$", "dest": "/index.html" },
     { "src": "^/about/?$", "dest": "/about.html" },
     { "src": "^/projects/?$", "dest": "/projects.html" },
