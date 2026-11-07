@@ -30,6 +30,7 @@
     { "src": "^/found-hers/en/?$", "dest": "/found-hers-en.html" },
         { "src": "^/en/the-brand/mayfair-luxury-fasion-14-11-2026/?$", "dest": "/mayfair-luxury-fashion-14-11-2026.html" },
     { "src": "^/en/the-brand/mayfair-luxury-fashion-14-11-2026/?$", "dest": "/mayfair-luxury-fashion-14-11-2026.html" },
+    { "src": "^/(mayfair-iren\\.svg|mayfair-gloves\\.svg)$", "dest": "/$1" },
     { "src": "^/$", "dest": "/index.html" },
     { "src": "^/about/?$", "dest": "/about.html" },
     { "src": "^/projects/?$", "dest": "/projects.html" },
