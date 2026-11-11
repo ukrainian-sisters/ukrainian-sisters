@@ -530,10 +530,10 @@
     <div style="display:flex;align-items:center;gap:10px;">
       <div class="lang-toggle">
         <a href="/the-brand">UA</a>
-        <a href="/the-brand-en" class="active">EN</a>
+        <a href="/en/the-brand" class="active">EN</a>
       </div>
       <a href="https://www.instagram.com/ukrainiansisters_thebrand" target="_blank" rel="noopener" aria-label="Instagram" style="display:flex;align-items:center;color:var(--ink);opacity:.7;transition:opacity .18s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity='.7'"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-      <a class="cart-icon-btn" href="/cart/en" id="nav-cart-btn">🛒 <span class="label">Cart</span><span class="cart-count" id="cart-count"></span></a>
+      <a class="cart-icon-btn" href="/en/cart" id="nav-cart-btn">🛒 <span class="label">Cart</span><span class="cart-count" id="cart-count"></span></a>
       <button class="menu-btn" id="menu-btn" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -550,7 +550,7 @@
   <div class="lang-row">
     <span>Language:</span>
     <a href="/the-brand">UA</a>
-    <a href="/the-brand-en" class="active">EN</a>
+    <a href="/en/the-brand" class="active">EN</a>
   </div>
 </div>
 
@@ -1044,7 +1044,7 @@ async function paySponsor(productId) {
     if(!formData) throw new Error('No formData returned');
     const wfp = new Wayforpay();
     wfp.run(formData,
-      () => { location.href = '/the-brand-en?order=success'; },
+      () => { location.href = '/en/the-brand?order=success'; },
       () => { if(btn){ btn.disabled=false; btn.textContent='Pay online →'; } },
       () => { if(btn){ btn.disabled=false; btn.textContent='Pay online →'; } }
     );
